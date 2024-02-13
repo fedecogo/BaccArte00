@@ -63,4 +63,6 @@ const MyProfile = () => {
             </div>
         </div>
     );
-    
+};
+
+export default MyProfile;
