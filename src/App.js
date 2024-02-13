@@ -6,18 +6,26 @@ import Cart from './components/Cart'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import NavBar from './components/NavBar'
+import Register from './components/Register'
+import MyProfile from './components/MyProfile'
+import Home from './components/Home'
+import NotFound from './components/NotFound'
+import CreateCustomBottle from './components/CreateYourCustumBottle'
 
 
 const App = () => (
  
   <BrowserRouter>
      <NavBar/>
-    <Container>
       <Routes>
+        <Route path="/home" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login/>}  />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/profile" element={<MyProfile/>}/>
+        <Route path="/create-your-custom-bottle" element={<CreateCustomBottle />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
-    </Container>
     <Footer/>
   </BrowserRouter>
  

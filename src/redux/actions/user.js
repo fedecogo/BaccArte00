@@ -1,9 +1,8 @@
 export const GET_USER_DATA = 'GET_USER_DATA';
-export const token = localStorage.getItem('token'); 
 
 
 
-export const getUserDataAction = () => {
+export const getUserDataAction = (token) => {
 	return async (dispatch) => {
 		const url = `http://localhost:3001/user/me`;
 		try {
@@ -14,16 +13,18 @@ export const getUserDataAction = () => {
 				},
 			});
 			if (userData.ok) {
-				const data = await userData.json();
-                console.log(data)
-				setTimeout(() => {
-					dispatch({
+				const user = await userData.json();
+                console.log("ecco lo user nell action")
+				console.log(user)
+				console.log("ecco il token nell action")
+				console.log(token)
+				dispatch({
 						type: GET_USER_DATA,
-						payload: data,
-					});
-				}, 500);
+						payload: user,loggedIn: true
+				});
+				
 			} else {
-				throw new Error('Errore nel download dei dati Utente');
+				throw new Error('Errore nel download dei dati user');
 			}
 		} catch (error) {
 			console.log('Errore', error);
