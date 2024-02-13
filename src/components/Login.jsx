@@ -3,6 +3,8 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { getUserDataAction } from '../redux/actions/user';
+import { getUserCartDataAction } from '../redux/actions/cart';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,6 +17,7 @@ const Login = () => {
       const data = await loginUser(email, password);
       localStorage.setItem('token', data.token);
       dispatch(getUserDataAction(data.token));
+      dispatch(getUserCartDataAction(data.token));
       navigate('/home');
     } catch (error) {
       console.error('Errore durante il login:', error);

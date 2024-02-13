@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userReducer from '../reducers/user';
-import bottleReducer from '../reducers/bottle';
+import cartReducer from '../reducers/cart';
 
 const allReducers = combineReducers({
 	user: userReducer,
-	bottle: bottleReducer,
+	cart: cartReducer,
 });
 const store = configureStore({
 	reducer: allReducers,
