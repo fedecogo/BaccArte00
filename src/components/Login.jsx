@@ -41,21 +41,16 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Login</h1>
+    <div className="login-container">
       <Form
-        style={{
-          maxWidth: '500px',
-          margin: 'auto',
-          padding: '20px',
-          border: '1px solid #ccc',
-          borderRadius: '20px',
-        }}
+        className="login-form"
         onSubmit={handleSubmit}
       >
+        <h1 className="login-title">Login</h1>
         <Form.Group controlId="formEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
+            className="login-input"
             required
             type="email"
             placeholder="Enter email"
@@ -63,10 +58,11 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-
+  
         <Form.Group controlId="formPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
+            className="login-input"
             required
             type="password"
             placeholder="Password"
@@ -74,18 +70,20 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-
-        <Button variant="primary" type="submit">
+  
+        <Button variant="primary" type="submit" className="login-button">
           Login
         </Button>
-        <Link to="/register">
-          <Button variant="secondary" style={{ marginLeft: '10px' }}>
+        <div className="register-link">
+          <Link to="/register" className="register-button">
             Register
-          </Button>
-        </Link>
+          </Link>
+        </div>
       </Form>
     </div>
   );
+  
+
 };
 
 export default Login;

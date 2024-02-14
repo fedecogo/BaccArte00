@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2'; 
-
+import { Form, Button } from 'react-bootstrap';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -8,11 +8,20 @@ const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [error, setError] = useState(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (password !== confirmPassword) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Le password non corrispondono!"
+            });
+            return;
+        }
 
         const data = {
             name,
@@ -35,7 +44,7 @@ const Register = () => {
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Something went wrong!"
+                    text: "L'email inserita è già in uso!"
                   });
                 throw new Error('Registration failed');
             }
@@ -51,44 +60,114 @@ const Register = () => {
                 window.location.href = '/login';
             }, 1500);
         })
-        
-        
         .catch(error => {
             console.error(error);
-            setError('Registration failed. Please try again.'); 
         });
     };
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-6">
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="Name" required />
-                        </div>
-                        <div className="mb-3">
-                            <input type="text" value={surname} onChange={(e) => setSurname(e.target.value)} className="form-control" placeholder="Surname" required />
-                        </div>
-                        <div className="mb-3">
-                            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="form-control" placeholder="Username" required />
-                        </div>
-                        <div className="mb-3">
-                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email" required />
-                        </div>
-                        <div className="mb-3">
-                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="Password" required />
-                        </div>
-                        <div className="mb-3">
-                            <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="Phone Number" />
-                        </div>
-                        {error && <div className="alert alert-danger">{error}</div>} 
-                        <button type="submit" className="btn btn-primary">Register</button>
-                    </form>
-                </div>
-            </div>
+        <div className="register-container">
+          <Form
+            className="register-form"
+            onSubmit={handleSubmit}
+          >
+            <h1 className="register-title">Register</h1>
+            <Form.Group controlId="formName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                className="register-input"
+                required
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
+      
+            <Form.Group controlId="formSurname">
+              <Form.Label>Surname</Form.Label>
+              <Form.Control
+                className="register-input"
+                required
+                type="text"
+                placeholder="Surname"
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
+              />
+            </Form.Group>
+      
+            <Form.Group controlId="formUsername">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                className="register-input"
+                required
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Form.Group>
+      
+            <Form.Group controlId="formEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                className="register-input"
+                required
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+      
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                className="register-input"
+                required
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+      
+            <Form.Group controlId="formConfirmPassword">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                className="register-input"
+                required
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </Form.Group>
+      
+            <Form.Group controlId="formPhoneNumber">
+              <Form.Label>Phone Number</Form.Label>
+              <div className="phone-input-container">
+                <Form.Control
+                  className="phone-input"
+                  type="tel"
+                  placeholder="Phone Number"
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    const input = e.target.value.replace(/\D/g, '');
+                    setPhoneNumber(input);
+                  }}
+                  inputMode="numeric"
+                />
+              </div>
+            </Form.Group>
+      
+            <Button variant="primary" type="submit" className="register-button">
+              Register
+            </Button>
+          </Form>
         </div>
-    );
+      );
+      
 };
 
 export default Register;

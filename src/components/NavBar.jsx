@@ -1,79 +1,124 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/bacca spirits & co. logo-01.webp';
 import { useSelector } from 'react-redux';
+import { FaBars } from 'react-icons/fa';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import LogoDarkTheme from '../assets/LogoDarkTheme.png'
+import LogoLightTheme from '../assets/LogoLightTheme.png'
+import { Col, Row,Dropdown } from 'react-bootstrap';
 
 const NavBar = () => {
   const userDataInSession = useSelector((state) => state.user.user[0]);
   const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const handleCloseMenu = () => setIsMenuOpen(false);
+  //close direttamente nel btn
+  const [isDarkTheme, setIsDarkTheme] = useState(localStorage.getItem('theme') === 'dark');
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+
+  const handleOpenProducts = () => {
+    setIsProductsOpen(true);
+  };
+  
+  const handleCloseProducts = () => {
+    setIsProductsOpen(false);
+  };
+  
+  const handleThemeChange = () => {
+    const newTheme = !isDarkTheme;
+    setIsDarkTheme(newTheme);
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+  };
+
+
+
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
-        <Link className="navbar-brand" to="/home">
-          <img src={logo} alt="Logo" className="logo" />
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
+    <div className="container-fluid" id="cc">
+      <div className={isDarkTheme ? "navbarr":"navbar-darkTheme"}>
+        <button className="navbar__menu-button" onClick={() => setIsMenuOpen(true)}>
+          <FaBars id={isDarkTheme ? "black":"white"} />
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                Chi Siamo
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/products">
-                Prodotti
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contatti
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-link" to="/create-your-custom-bottle">
-                Create Your Custom Bottle
-              </Link>
-            </li>
-            {isUserLoggedIn ? (
-              <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/profile">
-                    Area Personale
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <div className="avatar-container">
-                    <img
-                      src={userDataInSession.avatar}
-                      alt="Profile Avatar"
-                      className="avatar-img"
-                    />
-                  </div>
-                </li>
-              </>
-            ) : (
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-              </li>
-            )}
-          </ul>
-        </div>
+          <Link className="navbar__logo" to="/home">
+            <img id="image" src={isDarkTheme ? LogoLightTheme : LogoDarkTheme} alt="Logo" className="logo" />
+          </Link>
       </div>
-    </nav>
+      <Offcanvas className={isDarkTheme ? "offcanvas-dark" : "offcanvas-light"} show={isMenuOpen} onHide={handleCloseMenu} scroll={true} backdrop={true}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Menu</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body className="d-flex flex-column justify-content-between">
+          <Row>
+            <Col xs={12} className='DivCanvas-Light'>
+              <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/home" onClick={handleCloseMenu}>
+                Home
+              </Link>
+            </Col>
+         <Col xs={12}>
+            <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/about" onClick={handleCloseMenu}>
+            Chi Siamo
+          </Link>
+            </Col>
+            <Col xs={12}>
+  <Dropdown onMouseOver={handleOpenProducts} onMouseLeave={handleCloseProducts}>
+    <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products" onClick={handleCloseMenu}>
+      Prodotti
+    </Link>
+    <Dropdown.Menu show={isProductsOpen}>
+      <Dropdown.Item>
+        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products/redberry" onClick={handleCloseMenu}>
+          Red Berry
+        </Link>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products/italianBouquet" onClick={handleCloseMenu}>
+          Italian Bouquet
+        </Link>
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+</Col>
+
+         <Col xs={12}>
+            <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/contact" onClick={handleCloseMenu}>
+            Contatti
+          </Link>
+            </Col>
+            <Col xs={12}>
+          <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/create-your-custom-bottle" onClick={handleCloseMenu}>
+            Create Custom Bottle
+          </Link>
+          </Col>
+          {isUserLoggedIn ? (
+            <><div>
+              <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/profile" onClick={handleCloseMenu}>
+                Area Personale
+              </Link>
+              <div className="avatar-container">
+                <img
+                  src={userDataInSession.avatar}
+                  alt="Profile Avatar"
+                  className="avatar-img"
+                />
+              </div>
+              </div>
+            </>
+          ) : (
+            <div>
+              <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/login" onClick={handleCloseMenu}>
+              Login
+            </Link>
+            </div>
+             )}
+          </Row>
+    
+          <button className={isDarkTheme ? "button-dark" : "button-light"} onClick={handleThemeChange}>
+            {isDarkTheme ? 'Tema Chiaro' : 'Tema Scuro'}
+          </button>
+         
+        </Offcanvas.Body>
+      </Offcanvas>
+    </div>
   );
 };
 

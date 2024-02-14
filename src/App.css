@@ -54,6 +54,15 @@
     background-position: center;
  }
  
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
  
  .four_zero_four_bg h1{
  font-size:80px;
@@ -95,12 +104,269 @@
   height: auto ;
 }
 
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.edit_container{
+  padding: 50px;
 }
+
+/*======================
+    Login Page
+=======================*/
+
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.login-form {
+  max-width: 500px;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.login-input {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.login-button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-button {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-button:hover {
+  text-decoration: underline;
+}
+
+
+
+
+/*======================
+    Register Page
+=======================*/
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.register-form {
+  max-width: 500px;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.register-input {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.phone-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.phone-input {
+  flex: 1;
+}
+
+.register-button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+
+
+/*======================
+    Home Page
+=======================*/
+
+.blur-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  backdrop-filter: blur(5px); 
+}
+
+
+
+/*======================
+   Navbar
+=======================*/
+#cheersMate{
+  margin: 0%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#black{
+  color: black;
+  margin-left: 20px;
+}
+#white{
+  color: white;
+  margin-left: 20px;
+}
+
+.navbarr{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+  background-color: #efefef;
+  color: white;
+  z-index: 2;
+  margin: 0px;
+  padding: 20px;
+}
+.navbar-darkTheme{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  margin-right: 20px;
+  color: white;
+  z-index: 2;
+  margin: 0px;
+  padding: 20px;
+}
+#cc{
+  padding: 0px;
+}
+.navbar__logo {
+  font-size: 1.5rem;
+  margin: 0 auto; 
+}
+
+.navbar__menu-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+#image{
+  max-height: 100px;
+  max-width: 300px;
+  transition: transform 0.5s; 
+}
+
+#image:hover{
+  transform: scale(1.1);
+}
+
+
+.navbar__logo {
+  font-size: 1.5rem;
+}
+.navbar__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 33.333%; 
+  height: 100%;
+  background-color: #222;
+  color: white;
+  padding: 20px;
+}
+
+.navbar__menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar__menu li {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.DivCanvas-Light{
+  transition: transform 0.5s; 
+}
+
+.menu-link-light {
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 28px; 
+  transition: margin 0.5s ease;
+}
+
+.menu-link-light:hover {
+  margin: 30px;
+}
+
+
+.DivCanvas-dark{
+  transition: transform 0.5s; 
+}
+
+.menu-link-dark {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 28px; 
+   transition: margin 0.5s ease;
+}
+
+.menu-link-dark:hover {
+  margin: 30px;
+}
+
+.offcanvas-dark .offcanvas-body {
+  background-color: rgb(255, 255, 255);
+}
+
+.offcanvas-light .offcanvas-body{
+  background-color: #000000;
+}
+.button-dark{
+  background-color: #000; 
+  color: #fff; 
+  border: none; 
+  margin-bottom: 20px;
+}
+
+.button-light{
+  background-color: #fff; 
+  color: #000; 
+  border: none; 
+  margin-bottom: 20px;
+}
+

@@ -24,7 +24,7 @@ export default function Footer() {
           </Col>
         </Row>
 
-        <Row className='mb-4'>
+        {/* <Row className='mb-4'>
           <Col>
             <p className='text-uppercase mb-4'>Sign up for our newsletter</p>
             <form>
@@ -34,7 +34,7 @@ export default function Footer() {
               </div>
             </form>
           </Col>
-        </Row>
+        </Row> */}
 
         <Row className='mb-4'>
           <Col>

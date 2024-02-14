@@ -1,15 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Form, Button, Row, Col, Container,Image } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import RedBerryFoto from '../components/../assets/createYouBottles/redBerry.png';
 import TransparentBottle from '../components/../assets/createYouBottles/trasparentBottle_png.png';
 import ItalianBouquetFoto from '../components/../assets/createYouBottles/italianBouquet.png';
+import wallpaper1viper from '../assets/viper/wallpaper.webp'
+import wallpaper2viper from '../assets/viper/wallpaper2.webp'
+import wallpaper1anna from '../assets/anna/wallpaper1.webp'
+import wallpaper2anna from '../assets/anna/wallpaper2.webp'
 
 const CreateCustomBottle = () => {
   const [sizeBottle, setSizeBottle] = useState('');
   const [bottleContents, setBottleContents] = useState('');
   const [artist, setArtist] = useState('');
   const [showImage, setShowImage] = useState('');
+  const [backgroundImageViper, setBackgroundImageViper] = useState(wallpaper1viper);
+  const [backgroundImageAnna, setBackgroundImageAnna] = useState(wallpaper2anna);
+
+  useEffect(() => {
+    if (artist === 'VIPER') {
+      const timer = setTimeout(() => {
+        setBackgroundImageViper(backgroundImageViper === wallpaper1viper ? wallpaper2viper : wallpaper1viper);
+      }, 5000); 
+      return () => clearTimeout(timer);
+    }
+  }
+  , [artist, backgroundImageViper]);
+
+  useEffect(() => {
+    if (artist === 'ANNA') {
+      const timer = setTimeout(() => {
+        setBackgroundImageAnna(backgroundImageAnna === wallpaper1anna ? wallpaper2anna : wallpaper1anna);
+      }, 5000); 
+      return () => clearTimeout(timer); 
+    }
+  }
+  , [artist, backgroundImageAnna]);
+
 
   //Submit del form
   const handleSubmit = async (event) => {
@@ -76,18 +103,18 @@ const CreateCustomBottle = () => {
   const getBackgroundStyle = () => {
     switch (artist) {
       case 'VIPER':
-        return { backgroundColor: 'red' };
+        return { backgroundImage: `url(${backgroundImageViper})` };
       case 'ANNA':
-        return { backgroundColor: 'pink' };
+        return { backgroundImage: `url(${backgroundImageAnna})` };
       case 'JAY':
         return { backgroundColor: 'blue' };
       default:
         return {};
     }
   };
-
+  
   return (
-    <div className="container" style={getBackgroundStyle()}>    
+    <div className="edit_container" style={getBackgroundStyle()}>    
       <h1>Create Your Custom Bottle</h1>
       <Row>
         <Col xs={6}>
