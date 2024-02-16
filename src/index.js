@@ -5,6 +5,8 @@ import App from './App'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './style/index.css'
+import 'react-multi-carousel/lib/styles.css';
+
 
 import store from './redux/store'
 import { Provider } from 'react-redux'

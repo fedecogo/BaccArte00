@@ -1,7 +1,7 @@
 import React from 'react';
 import fotoRedBerry from '../assets/createYouBottles/redBerry.png';
 import fotoItalianBouquet from '../assets/createYouBottles/italianBouquet.png';
-import { Form, Button, Row, Col, Container } from 'react-bootstrap';
+import {Row, Col, Container } from 'react-bootstrap';
 
 
 const ProductComponent = () => {

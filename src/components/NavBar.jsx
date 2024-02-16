@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../redux/actions/theme';
 import { FaBars } from 'react-icons/fa';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import LogoDarkTheme from '../assets/LogoDarkTheme.png'
@@ -10,11 +11,18 @@ import { Col, Row,Dropdown } from 'react-bootstrap';
 const NavBar = () => {
   const userDataInSession = useSelector((state) => state.user.user[0]);
   const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
+  const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleCloseMenu = () => setIsMenuOpen(false);
   //close direttamente nel btn
-  const [isDarkTheme, setIsDarkTheme] = useState(localStorage.getItem('theme') === 'dark');
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  //reduxtheme
+  const dispatch = useDispatch();
+
+
+  const handleThemeChange = () => {
+    dispatch(toggleTheme());
+  };
 
   const handleOpenProducts = () => {
     setIsProductsOpen(true);
@@ -24,11 +32,6 @@ const NavBar = () => {
     setIsProductsOpen(false);
   };
   
-  const handleThemeChange = () => {
-    const newTheme = !isDarkTheme;
-    setIsDarkTheme(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-  };
 
 
 
