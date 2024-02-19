@@ -12,6 +12,7 @@ import CreateCustomBottle from './components/CreateYourCustumBottle'
 import ProductComponent from './components/ProductComponent'
 import RedBerryGin from './components/products/RedBerryGin'
 import ItalianBouquetGin from './components/products/ItalianBouquet'
+import MyCart from './components/MyCart'
 
 
 const App = () => (
@@ -27,7 +28,7 @@ const App = () => (
         <Route path="/products/RedBerryGin" element={<RedBerryGin/>} />
         <Route path="/products/ItalianBouquetGin" element={<ItalianBouquetGin/>} />
         <Route path="/create-your-custom-bottle" element={<CreateCustomBottle />} />
-
+        <Route path='/myCart' element={<MyCart />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     <Footer/>

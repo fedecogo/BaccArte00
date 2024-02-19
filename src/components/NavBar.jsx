@@ -89,7 +89,7 @@ const NavBar = () => {
             </Col>
             <Col xs={12}>
           <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/create-your-custom-bottle" onClick={handleCloseMenu}>
-            Create Custom Bottle
+           Create Bacca
           </Link>
           </Col>
           {isUserLoggedIn ? (

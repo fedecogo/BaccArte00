@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-multi-carousel';
-import { Row, Col, Spinner } from 'react-bootstrap';
+import { Row, Col, Spinner , Button} from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import { getUserDataAction } from '../redux/actions/user';
 import { FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { getUserCartDataAction } from '../redux/actions/cart';
 
 const MyProfile = () => {
   const [userBottles, setUserBottles] = useState([]);
@@ -27,6 +29,7 @@ const MyProfile = () => {
         });
         const data = await response.json();
         setUserBottles(data);
+      dispatch(getUserCartDataAction(data.token));
       } catch (error) {
         console.error('Error fetching user bottles:', error);
       }
@@ -79,12 +82,40 @@ const MyProfile = () => {
     }
   };
 
+  const handleDeleteBottle = async (bottleId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3001/user/me/deleteYourBottle', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ bottleId })
+      });
+      if (response.ok) {
+        setUserBottles(userBottles.filter(bottle => bottle.id_bottle !== bottleId));
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Bottiglia eliminata con successo",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else {
+        console.error('Failed to delete bottle');
+      }
+    } catch (error) {
+      console.error('Error deleting bottle:', error);
+    }
+  };
+
   const user = userDataInSession[0];
 
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
-      items: 3
+      items: 4
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -101,6 +132,7 @@ const MyProfile = () => {
   };
 
   return (
+    //utente normale
     <Row className={isDarkTheme ? "divHomeLight" : "divHomeDark"} xs={12} md={8}>
             <Row className="justify-content-center">
                 <Col md={10}>
@@ -128,27 +160,29 @@ const MyProfile = () => {
                             Image uploaded successfully!
                         </div>
                     )}
-                      <button>
-      <FaShoppingCart /> {userCartTot}
-    </button>
+                   <Link to="/mycart" className="btn btn-primary mt-3 btn-block">
+                   <FaShoppingCart /> {userCartTot}
+                    </Link>
                     <h5 className="text-center mt-4">Your Bottles:</h5>
                     <Carousel responsive={responsive} autoPlay={true} autoPlaySpeed={3000} infinite={true}>
-                        {userBottles.map(bottle => (
-                            <div className="card mt-3" style={{width: "18rem"}} key={bottle.id_bottle}>
-                                <img src={bottle.logoUser} className="d-block w-100" alt="Logo User"/>
-                                <div className="card-body">
-                                    <h6>{bottle.sizeBottle} - {bottle.bottleContents}</h6>
-                                    <p><strong>Artista:</strong> {bottle.artist}</p>
-                                    <p><strong>Prezzo:</strong> €{bottle.price}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </Carousel>
+            {userBottles.map(bottle => (
+              <div className="card mt-3" style={{ width: "18rem" }} key={bottle.id_bottle}>
+                <img src={bottle.logoUser} className="d-block w-100" alt="Logo User" />
+                <div className="card-body">
+                  <h6>{bottle.sizeBottle} - {bottle.bottleContents}</h6>
+                  <p><strong>Artista:</strong> {bottle.artist}</p>
+                  <p><strong>Prezzo:</strong> €{bottle.price}</p>
+                  <Button variant="danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
+                </div>
+              </div>
+            ))}
+          </Carousel>
                     <button className="btn btn-danger mt-3 btn-block" onClick={handleLogout}>Logout</button>
                 </Col>
             </Row>
         </Row>
     );
+    //utente admin
     
     
     

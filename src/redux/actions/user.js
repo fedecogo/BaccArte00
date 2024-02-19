@@ -20,7 +20,8 @@ export const getUserDataAction = (token) => {
 				console.log(token)
 				dispatch({
 						type: GET_USER_DATA,
-						payload: user,loggedIn: true
+						payload: user,
+						loggedIn: true
 				});
 				
 			} else {
