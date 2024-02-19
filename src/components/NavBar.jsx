@@ -16,6 +16,7 @@ const NavBar = () => {
   const handleCloseMenu = () => setIsMenuOpen(false);
   //close direttamente nel btn
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isArtistOpen, setIsArtistOpen] = useState(false);
   //reduxtheme
   const dispatch = useDispatch();
 
@@ -31,6 +32,15 @@ const NavBar = () => {
   const handleCloseProducts = () => {
     setIsProductsOpen(false);
   };
+
+  const handleOpenArtists = () => {
+    setIsArtistOpen(true);
+  };
+  
+  const handleCloseArtists = () => {
+    setIsArtistOpen(false);
+  };
+
   
 
 
@@ -48,7 +58,6 @@ const NavBar = () => {
       </div>
       <Offcanvas className={isDarkTheme ? "offcanvas-dark" : "offcanvas-light"} show={isMenuOpen} onHide={handleCloseMenu} scroll={true} backdrop={true}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="d-flex flex-column justify-content-between">
           <Row>
@@ -56,12 +65,7 @@ const NavBar = () => {
               <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/home" onClick={handleCloseMenu}>
                 Home
               </Link>
-            </Col>
-         <Col xs={12}>
-            <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/about" onClick={handleCloseMenu}>
-            Chi Siamo
-          </Link>
-            </Col>
+            </Col>         
             <Col xs={12}>
   <Dropdown onMouseOver={handleOpenProducts} onMouseLeave={handleCloseProducts}>
     <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products" onClick={handleCloseMenu}>
@@ -81,10 +85,48 @@ const NavBar = () => {
     </Dropdown.Menu>
   </Dropdown>
 </Col>
-
          <Col xs={12}>
-            <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/contact" onClick={handleCloseMenu}>
-            Contatti
+            <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/about" onClick={handleCloseMenu}>
+            La Storia
+          </Link>
+            </Col>
+            <Col xs={12}>
+            <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/about" onClick={handleCloseMenu}>
+            I valori
+          </Link>
+            </Col>
+            <Col xs={12}>
+            <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/about" onClick={handleCloseMenu}>
+            Gli event
+          </Link>
+            </Col>
+            <Col xs={12}>
+  <Dropdown onMouseOver={handleOpenArtists} onMouseLeave={handleCloseArtists}>
+    <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products" onClick={handleCloseMenu}>
+      Artisti
+    </Link>
+    <Dropdown.Menu show={isArtistOpen}>
+      <Dropdown.Item>
+        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/artist/ViperHaze" onClick={handleCloseMenu}>
+          ViperHaze
+        </Link>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products/italianBouquet" onClick={handleCloseMenu}>
+          Anna
+        </Link>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products/italianBouquet" onClick={handleCloseMenu}>
+          jay
+        </Link>
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+</Col>
+            <Col xs={12}>
+            <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/about" onClick={handleCloseMenu}>
+            Lavora Con noi
           </Link>
             </Col>
             <Col xs={12}>

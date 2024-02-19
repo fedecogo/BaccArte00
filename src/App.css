@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Tourney:ital,wght@0,100..900;1,100..900&display=swap");
+html, body {
+  min-height: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -40,16 +48,16 @@
 }
 
 #root {
-  min-height: 100vh;
+  min-height: 100%;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.epizon-footer {
+.footerCs {
   text-align: center;
-  position: relative;
-  bottom: 0;
+  margin-top: auto; /* Imposta il margine superiore automaticamente per spingere il footer in fondo */
   width: 100%;
-  height: 50px;
-  line-height: 50px;
 }
 
 /*======================
@@ -327,6 +335,10 @@
 }
 
 .navbarr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -458,13 +470,105 @@
 }
 
 .divHomeLight {
+  margin-top: 10rem !important;
   background-color: #fff;
   color: #000;
-  padding: 4vh 0vh 12vh 12vh;
+  padding-bottom: 8rem;
 }
 
 .divHomeDark {
   background-color: #000;
   color: #fff;
   padding: 4vh;
+}
+
+@media only screen and (max-width: 768px) {
+  .titoloViper h1 {
+    font-size: 24px;
+  }
+  .titoloViper h3 {
+    font-size: 18px;
+  }
+  .sottoTitoloViper h2 {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .titoloViper h1 {
+    font-size: 18px;
+  }
+  .titoloViper h3 {
+    font-size: 18px;
+  }
+  .sottoTitoloViper h2 {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .page2v h1 {
+    font-size: 60px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .page2v h1 {
+    font-size: 24px;
+  }
+}
+.page1v {
+  background-color: #000000;
+  color: #FFFFFF;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titoloViper {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.titoloViper h1 {
+  color: #FFFFFF !important;
+  font-family: "Tourney", sans-serif;
+  font-size: 40px;
+}
+
+.titoloViper h3 {
+  color: #FFFFFF;
+  font-size: 24px;
+}
+
+.sottoTitoloViper {
+  text-align: center;
+}
+
+.sottoTitoloViper h2 {
+  color: #FF1616;
+  font-size: 24px;
+}
+
+.rotateA {
+  transform: rotate(-90deg);
+}
+
+.rotateB {
+  transform: rotate(90deg);
+}
+
+.page2v {
+  background-color: #FF1616;
+  color: #FFFFFF;
+  font-family: "Tourney", sans-serif;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=app.css.map */

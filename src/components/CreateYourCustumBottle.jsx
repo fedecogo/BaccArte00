@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
-import { Form, Button, Row, Col, Container,Image } from 'react-bootstrap';
+import { Form, Button, Row, Col,Image } from 'react-bootstrap';
 import Swal from 'sweetalert2';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import RedBerryFoto from '../components/../assets/createYouBottles/redBerry.png';
 import TransparentBottle from '../components/../assets/createYouBottles/trasparentBottle_png.png';
 import ItalianBouquetFoto from '../components/../assets/createYouBottles/italianBouquet.png';

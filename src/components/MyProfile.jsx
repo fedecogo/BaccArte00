@@ -163,6 +163,7 @@ const MyProfile = () => {
                    <Link to="/mycart" className="btn btn-primary mt-3 btn-block">
                    <FaShoppingCart /> {userCartTot}
                     </Link>
+                    <button className="btn btn-danger mt-3 btn-block" onClick={handleLogout}>Logout</button>
                     <h5 className="text-center mt-4">Your Bottles:</h5>
                     <Carousel responsive={responsive} autoPlay={true} autoPlaySpeed={3000} infinite={true}>
             {userBottles.map(bottle => (
@@ -177,7 +178,7 @@ const MyProfile = () => {
               </div>
             ))}
           </Carousel>
-                    <button className="btn btn-danger mt-3 btn-block" onClick={handleLogout}>Logout</button>
+                    
                 </Col>
             </Row>
         </Row>
