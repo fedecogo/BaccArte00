@@ -316,7 +316,52 @@ html, body {
   /*======================
       Home Page
   =======================*/
+.Discover{
+  text-align: center;
+  font-size: 5rem;
+}
+
+  .TitoliDiv {
+    padding: 20px;
+    text-align: center;
+    color: #000000; 
+    background-size: cover;
+    background-position: center;
   
+    h1 {
+      font-size: 2.5em; 
+      margin-bottom: 10px;
+    }
+  
+    h2 {
+      font-size: 1.8em; 
+      margin-bottom: 300px; 
+    }
+  
+    h3 {
+      margin-top: 300px;
+      font-size: 1.3em; 
+      margin-bottom: 5px; 
+    }
+  
+    @media screen and (max-width: 768px) {
+      padding: 10px; 
+  
+      h1 {
+        font-size: 2em; 
+      }
+  
+      h2 {
+        font-size: 1.5em; 
+      }
+  
+      h3 {
+        font-size: 1.1em;
+      }
+    }
+  }
+  
+
   .blur-background {
     position: fixed;
     top: 0;
@@ -332,15 +377,14 @@ html, body {
     background-repeat: no-repeat;
     filter: grayscale(100%);
     transition: all 0.3s ease-in-out;
-    height: 1000px;  
+    height: 1200px;  
     &:hover {
       filter: grayscale(0%);
       transform: scale(1.1);
-      color:#EB5241;
     }
   }
   .Trinità h3 {
-    padding: 30PX;
+    padding: 30px;
     font-size: 6.5rem;
   }
   
@@ -348,6 +392,9 @@ html, body {
     .Trinità {
       height: 800px; 
       filter: grayscale(0%);
+    }
+    .Trinità h3 {
+    padding: 0PX;
     }
     .first-col {
       padding-left: 20px;

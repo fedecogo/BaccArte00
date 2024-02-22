@@ -113,12 +113,7 @@ const NavBar = () => {
       </Dropdown.Item>
       <Dropdown.Item>
         <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products/italianBouquet" onClick={handleCloseMenu}>
-          Anna
-        </Link>
-      </Dropdown.Item>
-      <Dropdown.Item>
-        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products/italianBouquet" onClick={handleCloseMenu}>
-          jay
+          Avvassena
         </Link>
       </Dropdown.Item>
     </Dropdown.Menu>

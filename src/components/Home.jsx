@@ -14,11 +14,14 @@ function Example() {
   const [isLegalAge, setIsLegalAge] = useState(false);
   const [smShow, setSmShow] = useState(true);
   const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
+  const name = useSelector((state) => state.user.loggedIn ? state.user.user[0].name : null);
+
 
   const avoidModalIfLogged = () => {
     if (isUserLoggedIn) {
       setIsLegalAge(true);
       setSmShow(false);
+
     }
   };
 
@@ -64,83 +67,18 @@ function Example() {
       )}
       <img src={HomeGif} alt="" />
       <Row>
-        <Col className='mb-5' xs={12} style={{ backgroundImage: `url(${Sfondo})` }}>
-          <h1>Benvento nel Mondo Bacca</h1>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.   
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.  
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.         
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias distinctio quia voluptas rerum, eveniet sapiente blanditiis accusantium architecto quasi maxime laboriosam, alias similique libero ducimus ab vel! Voluptas, sed voluptatem?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, consequatur nihil autem commodi vitae esse hic, natus similique eveniet, voluptatem quo repellat quibusdam quod alias accusantium officiis odio consequuntur quae.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa accusamus, ab praesentium iste eius explicabo! Dolorem, dolore quibusdam voluptatum fugit delectus tempore sit! Magnam, perferendis vel saepe minima aliquam at.                
-        </Col>
-      </Row>
-      <Row className="ml-2">
+  <Col className='mb-5 TitoliDiv' xs={12} style={{ backgroundImage: `url(${Sfondo})` }}>
+    {isUserLoggedIn ? (
+      <h3>Bentornato {name}</h3>
+    ) : (
+      <h3>Benvenuto</h3>
+    )}
+    <h1>Nel Mondo Bacca</h1>
+    <h2>Produciamo e commercializziamo bevande con amore dal 2018</h2>
+  </Col>
+</Row>
+  <h1 className='Discover' >DISCOVER OUR SERVICE</h1>
+      <Row className="ml-2 p-5 ">
         <Col xs={12} sm={4} md={4} className="first-col">
           <div className="Trinità" style={{ backgroundImage: `url(${foto1})` }}>
             <h3>Red Berry Gin</h3>
@@ -157,8 +95,8 @@ function Example() {
           </div>
         </Col>
       </Row>
-    
-      <Row xs={12}>
+    <h1 className='Discover mb-4' >La grandezza di un prodotto risiede nella sua capacità di raccontare una storia che emana bellezza, autenticità e significato</h1>
+      <Row className='p-5'>
   <Col xs={12} md={4}>
     <div className="video-background">
       <div className="video-wrap">
