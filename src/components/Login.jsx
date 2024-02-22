@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { getUserDataAction } from '../redux/actions/user';
 import { getUserCartDataAction } from '../redux/actions/cart';
@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,13 +42,13 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className={isDarkTheme ? "login-container": "login-container-darkTheme" }>
       <Form
-        className="login-form"
+        className={isDarkTheme ?"login-form" : "login-form-darkTheme"}
         onSubmit={handleSubmit}
       >
-        <h1 className="login-title">Login</h1>
-        <Form.Group controlId="formEmail">
+        <h1 className={isDarkTheme ?"login-title":"login-title-darkTheme "}>Login</h1>
+        <Form.Group className={isDarkTheme ?"login-title":"text-white"} controlId="formEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             className="login-input"
@@ -60,9 +61,9 @@ const Login = () => {
         </Form.Group>
   
         <Form.Group controlId="formPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className={isDarkTheme ?"login-title":"text-white"}  >Password</Form.Label>
           <Form.Control
-            className="login-input"
+            className="login-input "
             required
             type="password"
             placeholder="Password"

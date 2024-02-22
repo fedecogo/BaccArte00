@@ -144,7 +144,7 @@ const MyProfile = () => {
                         </Col>
                         <Col md={8}>
                             <h2>{user.name} {user.surname}</h2>
-                            <p><strong>Username:</strong> {user.username}</p>
+                           
                             <p><strong>Email:</strong> {user.email}</p>
                             <p><strong>Phone Number:</strong> {user.phoneNumber}</p>
                             <p><strong>Type of User:</strong> {user.typeOfUser}</p>

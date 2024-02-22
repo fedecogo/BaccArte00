@@ -9,6 +9,7 @@ import video from '../assets/Home/20231220_111931.mp4';
 import video2 from "../assets/Home/20221120_173334.mp4";
 import video3 from "../assets/Home/20221130_211358.mp4";
 import Sfondo from '../assets/Home/20220618_202502.jpg';
+import bacca from '../assets/Home/bacca.jpg';
 
 function Example() {
   const [isLegalAge, setIsLegalAge] = useState(false);
@@ -95,7 +96,15 @@ function Example() {
           </div>
         </Col>
       </Row>
-    <h1 className='Discover mb-4' >La grandezza di un prodotto risiede nella sua capacità di raccontare una storia che emana bellezza, autenticità e significato</h1>
+      <Col xs={12} style={{ 
+  backgroundImage: `url(${bacca})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover'
+}}>
+  <h1 className='Discover mb-4 text-white'>La grandezza di un prodotto risiede nella sua capacità di raccontare una storia che emana bellezza, autenticità e significato</h1> 
+</Col>
+
+    
       <Row className='p-5'>
   <Col xs={12} md={4}>
     <div className="video-background">

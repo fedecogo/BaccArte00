@@ -71,7 +71,8 @@ const NavBar = () => {
     <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products" onClick={handleCloseMenu}>
       Prodotti
     </Link>
-    <Dropdown.Menu show={isProductsOpen}>
+    <Dropdown.Menu className={isDarkTheme ?"dropdown-menu-light": "dropdown-menu-dark"} show={isProductsOpen}>
+
       <Dropdown.Item>
         <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products/redberry" onClick={handleCloseMenu}>
           Red Berry
@@ -105,7 +106,8 @@ const NavBar = () => {
     <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products" onClick={handleCloseMenu}>
       Artisti
     </Link>
-    <Dropdown.Menu show={isArtistOpen}>
+    <Dropdown.Menu className={isDarkTheme ?"dropdown-menu-light": "dropdown-menu-dark"} show={isArtistOpen}>
+
       <Dropdown.Item>
         <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/artist/ViperHaze" onClick={handleCloseMenu}>
           ViperHaze

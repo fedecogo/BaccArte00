@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2'; 
 import { Form, Button } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -10,6 +11,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -66,14 +68,14 @@ const Register = () => {
     };
 
     return (
-        <div className="register-container">
+        <div className={isDarkTheme ? "register-container":"register-container-darkTheme"}>
           <Form
-            className="register-form"
+          className={isDarkTheme ?"register-form":"register-form-darkTheme"}
             onSubmit={handleSubmit}
           >
-            <h1 className="register-title">Register</h1>
+            <h1 className={isDarkTheme ? "register-title":"register-title-darkTheme"}>Register</h1>
             <Form.Group controlId="formName">
-              <Form.Label>Name</Form.Label>
+              <Form.Label className={isDarkTheme ?"text-black":"text-white"}>Name</Form.Label>
               <Form.Control
                 className="register-input"
                 required
@@ -85,7 +87,7 @@ const Register = () => {
             </Form.Group>
       
             <Form.Group controlId="formSurname">
-              <Form.Label>Surname</Form.Label>
+              <Form.Label className={isDarkTheme ?"text-black":"text-white"}>Surname</Form.Label>
               <Form.Control
                 className="register-input"
                 required
@@ -97,7 +99,7 @@ const Register = () => {
             </Form.Group>
       
             <Form.Group controlId="formUsername">
-              <Form.Label>Username</Form.Label>
+              <Form.Label className={isDarkTheme ?"text-black":"text-white"}>Username</Form.Label>
               <Form.Control
                 className="register-input"
                 required
@@ -109,7 +111,7 @@ const Register = () => {
             </Form.Group>
       
             <Form.Group controlId="formEmail">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label className={isDarkTheme ?"text-black":"text-white"}>Email address</Form.Label>
               <Form.Control
                 className="register-input"
                 required
@@ -121,7 +123,7 @@ const Register = () => {
             </Form.Group>
       
             <Form.Group controlId="formPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className={isDarkTheme ?"text-black":"text-white"}>Password</Form.Label>
               <Form.Control
                 className="register-input"
                 required
@@ -133,7 +135,7 @@ const Register = () => {
             </Form.Group>
       
             <Form.Group controlId="formConfirmPassword">
-              <Form.Label>Confirm Password</Form.Label>
+              <Form.Label className={isDarkTheme ?"text-black":"text-white"}>Confirm Password</Form.Label>
               <Form.Control
                 className="register-input"
                 required
@@ -145,7 +147,7 @@ const Register = () => {
             </Form.Group>
       
             <Form.Group controlId="formPhoneNumber">
-              <Form.Label>Phone Number</Form.Label>
+              <Form.Label className={isDarkTheme ?"text-black":"text-white"}>Phone Number</Form.Label>
               <div className="phone-input-container">
                 <Form.Control
                   className="phone-input"

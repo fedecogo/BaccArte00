@@ -75,14 +75,14 @@ useEffect(() => {
 
   const generatePreview = async () => {
     try {
-      const bottleImageUrl = TransparentBottle; 
-      const artistStyleUrl = artist === 'VIPER' ? backgroundImageViper :backgroundImageAnna ; 
-      const base64Image = await mergeImages([
-        { src: bottleImageUrl, x: 0, y: 0 }, 
-        { src: artistStyleUrl, x: 300, y: 800, opacity: 0.0001}, 
-      ]);
-      console.log(base64Image);
-      setShowImage(base64Image);
+      // const bottleImageUrl = TransparentBottle; 
+      // const artistStyleUrl = artist === 'VIPER' ? backgroundImageViper :backgroundImageAnna ; 
+      // const base64Image = await mergeImages([
+      //   { src: bottleImageUrl, x: 0, y: 0 }, 
+      //   { src: artistStyleUrl, x: 300, y: 800, opacity: 0.0001}, 
+      // ]);
+      // console.log(base64Image);
+      setShowImage(TransparentBottle);
     } catch (error) {
       console.error('Errore durante la generazione dell\'anteprima della bottiglia personalizzata:', error);
     }
@@ -141,7 +141,7 @@ useEffect(() => {
   
 const handleSizeChange = (event) => {
   setSizeBottle(event.target.value);
-  setShowImage('');
+  // setShowImage('');
   generatePreview(); 
 };
 
