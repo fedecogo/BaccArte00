@@ -200,15 +200,15 @@ html, body {
 
 .BottlePreview .logo {
   position: absolute;
-  top: 88%;
+  top: 93%;
   left: 58%;
   z-index: 1;
   max-width: 203px;
 }
 .BottlePreview .logo1 {
   position: absolute;
-  top: 55%;
-  left: 61%;
+  top: 58%;
+  left: 60.8%;
   z-index: 1;
   max-width: 122px;
   
@@ -734,5 +734,42 @@ $font-size-large2: 60px;
 
   @media screen and (min-width: 757px) {
   padding: 10% 23% 10% 23% !important;
+  }
+}
+
+
+
+  .description-column {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 35px;
+  }
+
+
+.description-column {
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0 0 70px 0;
+
+    li {
+      margin-bottom: 5px;
+      
+    font-weight: bold;
+    }
+  }
+
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Carousel,Image } from 'react-bootstrap';
+import { Col, Row, Carousel,Image, Button } from 'react-bootstrap';
 import imageCarousel1 from '../../assets/redBerry/IMG_2123.JPG'
 import imageCarousel2 from '../../assets/redBerry/IMG_2124.JPG'
 import imageCarousel3 from '../../assets/redBerry/IMG_2125.JPG'
@@ -13,9 +13,29 @@ import imageCarousel10 from '../../assets/redBerry/IMG_2132.JPG'
 import imageCarousel11 from '../../assets/redBerry/IMG_2133.JPG'
 import cinCin from '../../assets/cinCin.png' 
 import fotoFamigliaNelTempo from '../../assets/redBerry/famiglia-neltempo_1.png'
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2'; 
 
 
 const RedBerryGin = () => {
+const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
+
+const handleAddToCart = () => {
+  if (!isUserLoggedIn) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Devi effettuare l'accesso per aggiungere al carrello!"
+    });
+  } else {
+
+
+  }
+};
+
+
+
+
     return (
       <div className="red-berry-gin">
         <Row className='p-2'>
@@ -62,22 +82,25 @@ const RedBerryGin = () => {
          </Carousel>
           </Col>
           <Col xs={12} md={6}>
-    <p>E’ un gin morbido e beverino, con note profumate e gradevoli. Alla bevuta risulta dolce nel cocktail ma è gradevole anche bevuto liscio o con ghiaccio. </p>   
-    <p> Non è un gin di massa: è a produzione limitata e 100% italiano. Vuole essere il tuo compagno di serata: condividilo con i tuoi amici e passa con loro i migliori #Funny Moments!</p>
+  <div className="description-column">
+    <p>E' un gin morbido e beverino, con note profumate e gradevoli. Alla bevuta risulta dolce nel cocktail ma è gradevole anche bevuto liscio o con ghiaccio.</p>
+    <p>Non è un gin di massa: è a produzione limitata e 100% italiano. Vuole essere il tuo compagno di serata: condividilo con i tuoi amici e passa con loro i migliori #Funny Moments!</p>
     <p>SCHEDA TECNICA</p>
     <ul>
-        <li>Spezia: Pepe rosa</li>
-        <li>Metodo: Infusione</li>
-        <li>Gradazione: 38% Vol.</li>
-        <li>Bottiglia: 700 ml</li>
-        <li>Luogo di produzione: Brescia</li>
-        <li>Ingredienti: Italiani</li>
-        <li>Morbido, profumato e gradevole</li>
-        <li>Perfetto in compagnia</li>
+      <li>Spezia: Pepe rosa</li>
+      <li>Metodo: Infusione</li>
+      <li>Gradazione: 38% Vol.</li>
+      <li>Bottiglia: 700 ml</li>
+      <li>Luogo di produzione: Brescia</li>
+      <li>Ingredienti: Italiani</li>
+      <li>Morbido, profumato e gradevole</li>
+      <li>Perfetto in compagnia</li>
     </ul>
-    <p>Prezzo: €32.50</p>
-    <button className="btn btn-primary">Aggiungi al carrello</button>
+    <p class="price">Prezzo: €32.50</p>
+    <Button className=" btn-primary" onClick={handleAddToCart}>Aggiungi al carrello</Button>
+  </div>
 </Col>
+
 
           <Col xs={12} className='redSpace'> 
             <Row xs={12}>

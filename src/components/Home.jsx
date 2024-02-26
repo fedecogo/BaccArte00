@@ -11,6 +11,7 @@ import video2 from "../assets/Home/20221120_173334.mp4";
 import video3 from "../assets/Home/20221130_211358.mp4";
 import Sfondo from '../assets/Home/20220618_202502.jpg';
 import bacca from '../assets/Home/bacca.jpg';
+import { Link } from 'react-router-dom';
 
 function Example() {
   const [isLegalAge, setIsLegalAge] = useState(false);
@@ -23,6 +24,7 @@ function Example() {
     if (isUserLoggedIn) {
       setIsLegalAge(true);
       setSmShow(false);
+      window.scrollTo(0, 0);
 
     }
   };
@@ -32,6 +34,7 @@ function Example() {
   const handleConfirmLegalAge = () => {
     setIsLegalAge(true);
     setSmShow(false);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -82,10 +85,13 @@ function Example() {
   <h1 className='Discover' >DISCOVER OUR SERVICE</h1>
       <Row className="ml-2 p-5 ">
         <Col xs={12} sm={4} md={4} className="first-col">
-          <div className="Trinità" style={{ backgroundImage: `url(${foto1})` }}>
-            <h3>Red Berry Gin</h3>
-          </div>
+          <Link to="/products/RedBerryGin">
+              <div className="Trinità" style={{ backgroundImage: `url(${foto1})` }} >
+              <h3>Red Berry Gin</h3>
+              </div>  
+           </Link>  
         </Col>
+       
         <Col xs={12} sm={4} md={4}>
           <div className="Trinità" style={{ backgroundImage: `url(${foto2})` }}>
             <h3>Italian Bouquet</h3>
