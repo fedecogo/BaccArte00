@@ -57,7 +57,7 @@ html, body {
 
 .footerCs {
   text-align: center;
-  margin-top: auto; /* Imposta il margine superiore automaticamente per spingere il footer in fondo */
+  margin-top: auto;
   width: 100%;
 }
 
@@ -179,27 +179,31 @@ html, body {
     transform: translate(0);
   }
 }
-.BottlePreview {
-  position: relative;
-  overflow: hidden;
-  width: 500px;
-  height: 700px;
+.BottlePreview .bottle-image {
+  max-width: 60%;
+  height: auto;
 }
 
+@media screen and (max-width: 768px) {
+  .BottlePreview .bottle-image {
+    width: auto;
+    max-height: 600px;
+  }
+}
 .BottlePreview .logo {
   position: absolute;
-  top: 45%;
-  left: 33%;
+  top: 88%;
+  left: 58%;
   z-index: 1;
   max-width: 203px;
 }
 
 .BottlePreview .logo1 {
   position: absolute;
-  top: 10%;
-  left: 40%;
+  top: 55%;
+  left: 61%;
   z-index: 1;
-  max-width: 127px;
+  max-width: 122px;
 }
 
 .bottle-image {
@@ -481,7 +485,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #222;
+  background-color: #111111;
   margin-right: 20px;
   color: white;
   z-index: 2;
@@ -525,7 +529,7 @@ html, body {
   left: 0;
   width: 33.333%;
   height: 100%;
-  background-color: #222;
+  background-color: #111111;
   color: white;
   padding: 20px;
 }
@@ -698,4 +702,20 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.redSpace {
+  background-color: #7D0000;
+  color: #fff;
+  text-align: center;
+}
+@media screen and (max-width: 756px) {
+  .redSpace {
+    padding: 42px 35px 65px 35px !important;
+  }
+}
+@media screen and (min-width: 757px) {
+  .redSpace {
+    padding: 10% 23% 10% 23% !important;
+  }
 }/*# sourceMappingURL=app.css.map */

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Row, Col, Modal, Button } from 'react-bootstrap';
 import HomeGif from '../assets/Home/189053_272a42c90acb2e3ad8002d063ee6554bf09731b2.gif';
+import HomeGifDark from '../assets/Home/output-onlinegiftools.gif';
 import foto1 from '../assets/Home/foto1.jpg';
 import foto2 from '../assets/Home/foto2.jpg';
 import foto3 from '../assets/Home/foto3.jpeg';
@@ -16,7 +17,7 @@ function Example() {
   const [smShow, setSmShow] = useState(true);
   const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
   const name = useSelector((state) => state.user.loggedIn ? state.user.user[0].name : null);
-
+  const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
 
   const avoidModalIfLogged = () => {
     if (isUserLoggedIn) {
@@ -66,7 +67,7 @@ function Example() {
           </Modal>
         </>
       )}
-      <img src={HomeGif} alt="" />
+      <img src={isDarkTheme ? HomeGif : HomeGifDark} alt="" />
       <Row>
   <Col className='mb-5 TitoliDiv' xs={12} style={{ backgroundImage: `url(${Sfondo})` }}>
     {isUserLoggedIn ? (

@@ -16,6 +16,7 @@ const MyProfile = () => {
   const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
   const userDataInSession = useSelector((state) => state.user.user);
   const userCartTot = useSelector((state) => state.cart.totCartPrice);
+  const [userType, setUserType] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,6 +37,26 @@ const MyProfile = () => {
     };
 
     fetchUserBottles();
+  }, []);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('http://localhost:3001/user/me', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        const data = await response.json();
+        setUserType(data.typeOfUser);
+        dispatch(getUserCartDataAction(token));
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
   }, []);
 
 
@@ -109,8 +130,16 @@ const MyProfile = () => {
       console.error('Error deleting bottle:', error);
     }
   };
+const handleAddBottleToCart = async (bottleId) => {
+
+}
 
   const user = userDataInSession[0];
+  const userNameA = userDataInSession[0].name;
+  const userNameB = userNameA.charAt(0).toUpperCase() + userNameA.slice(1).toLowerCase();
+  console.log(userNameB);
+  
+
 
   const responsive = {
     superLargeDesktop: {
@@ -136,6 +165,8 @@ const MyProfile = () => {
     <Row className={isDarkTheme ? "divHomeLight" : "divHomeDark"} xs={12} md={8}>
             <Row className="justify-content-center">
                 <Col md={10}>
+                {userType === 'USER' && (
+            <>
                     <Row>
                         <Col md={4} className="d-flex justify-content-center">
                             <div className="profile-picture" style={{position: 'relative', borderRadius: '50%', overflow: 'hidden', width: '200px', height: '200px'}}>
@@ -143,7 +174,7 @@ const MyProfile = () => {
                             </div>
                         </Col>
                         <Col md={8}>
-                            <h2>{user.name} {user.surname}</h2>
+                            <h2>{userNameB} {user.surname}</h2>
                            
                             <p><strong>Email:</strong> {user.email}</p>
                             <p><strong>Phone Number:</strong> {user.phoneNumber}</p>
@@ -174,11 +205,77 @@ const MyProfile = () => {
                   <p><strong>Artista:</strong> {bottle.artist}</p>
                   <p><strong>Prezzo:</strong> €{bottle.price}</p>
                   <Button variant="danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
+                  <Button variant="primary"onClick={() => handleAddBottleToCart(bottle.id_bottle)}>Add To cart</Button>
                 </div>
               </div>
             ))}
           </Carousel>
-                    
+          </>
+          )}
+          
+          {userType === 'ADMIN' && (
+            <>  <Row>
+            <Col md={4} className="d-flex justify-content-center">
+                <div className="profile-picture" style={{position: 'relative', borderRadius: '50%', overflow: 'hidden', width: '200px', height: '200px'}}>
+                    <img src={user.avatar} alt="Profile" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+                </div>
+            </Col>
+            <Col md={8}>
+                <h2>Welcome back admin {userNameB}. Here you can check your site </h2>
+            </Col>
+        </Row>
+        <Row>
+          <Col> 
+          <button className="btn btn-primary mt-3 btn-block" onClick={handleImageUpload}>Upload Image</button>
+          </Col>
+          <Col>       
+          <input type="file" accept="image/*" onChange={handleFileChange} className="btn mt-3 btn-block" />
+        {uploading && <Spinner animation="border" role="status">
+    <span className="sr-only">Loading...</span>
+</Spinner>}
+        {uploadSuccess && (
+            <div className="alert alert-success mt-3" role="alert">
+                Image uploaded successfully!
+            </div>
+        )}
+          </Col>
+          <Col>  
+           <Link to="/mycart" className="btn btn-primary mt-3 btn-block">
+            <FaShoppingCart /> {userCartTot}
+        </Link>
+          </Col>
+       <Col>
+        <button className="btn btn-danger mt-3 btn-block" onClick={handleLogout}>Logout</button>
+       </Col>
+ 
+    
+       </Row>
+        <h5 className="text-center mt-4">Your Bottles:</h5>
+        <Carousel responsive={responsive} autoPlay={true} autoPlaySpeed={3000} infinite={true}>
+{userBottles.map(bottle => (
+  <div className="card mt-3" style={{ width: "18rem" }} key={bottle.id_bottle}>
+    <img src={bottle.logoUser} className="d-block w-100" alt="Logo User" />
+    <div className="card-body">
+      <h6>{bottle.sizeBottle} - {bottle.bottleContents}</h6>
+      <p><strong>Artista:</strong> {bottle.artist}</p>
+      <p><strong>Prezzo:</strong> €{bottle.price}</p>
+      <Button variant="danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
+    </div>
+  </div>
+))}
+</Carousel>
+            </>
+          )}
+
+          {/* Artist Profile Information */}
+          {userType === 'ARTIST' && (
+            <>
+
+
+
+            </>
+          )}
+
                 </Col>
             </Row>
         </Row>

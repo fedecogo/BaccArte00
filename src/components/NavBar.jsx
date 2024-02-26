@@ -74,7 +74,7 @@ const NavBar = () => {
     <Dropdown.Menu className={isDarkTheme ?"dropdown-menu-light": "dropdown-menu-dark"} show={isProductsOpen}>
 
       <Dropdown.Item>
-        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products/redberry" onClick={handleCloseMenu}>
+        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="products/RedBerryGin" onClick={handleCloseMenu}>
           Red Berry
         </Link>
       </Dropdown.Item>

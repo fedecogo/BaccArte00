@@ -8,6 +8,7 @@ const ProductComponent = () => {
     return (
         <Container>
             <Row>
+                <h1>Scopri Lo Spirito Bacca Degustando i nostri prodotti</h1>
                 <Col xs={6}>
                     <h2>Red Berry</h2>
                     <div className="product-details">
@@ -22,6 +23,11 @@ const ProductComponent = () => {
                         <p></p>
                     </div>
                 </Col>
+            </Row>
+            <Row>
+               <Col>
+                 <h1>Selezione Custum Consigliata Da Bacca:</h1>
+               </Col> 
             </Row>
         </Container>
     );
