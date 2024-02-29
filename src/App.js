@@ -11,9 +11,10 @@ import NotFound from './components/NotFound'
 import CreateCustomBottle from './components/CreateYourCustumBottle'
 import ProductComponent from './components/ProductComponent'
 import RedBerryGin from './components/products/RedBerryGin'
-import ItalianBouquetGin from './components/products/ItalianBouquet'
+import ItalianBouquet from './components/products/ItalianBouquet'
 import MyCart from './components/MyCart'
 import ViperHaze from './components/artist/ViperHaze'
+
 
 const App = () => (
  
@@ -26,7 +27,7 @@ const App = () => (
         <Route path="/profile" element={<MyProfile/>}/>
         <Route path='/products' element={<ProductComponent/>} />
         <Route path="/products/RedBerryGin" element={<RedBerryGin/>} />
-        <Route path="/products/ItalianBouquetGin" element={<ItalianBouquetGin/>} />
+        <Route path="/products/ItalianBouquet" element={<ItalianBouquet/>} />
         <Route path="/artist/ViperHaze" element={<ViperHaze/>} />
         <Route path="/create-your-custom-bottle" element={<CreateCustomBottle />} />
         <Route path='/myCart' element={<MyCart />} />

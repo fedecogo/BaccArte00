@@ -20,7 +20,7 @@ import Swal from 'sweetalert2';
 const RedBerryGin = () => {
 const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
 
-const handleAddToCart = () => {
+const addToCart = async (bottleId, quantity) => {
   if (!isUserLoggedIn) {
     Swal.fire({
       icon: "error",
@@ -28,17 +28,33 @@ const handleAddToCart = () => {
       text: "Devi effettuare l'accesso per aggiungere al carrello!"
     });
   } else {
-
+  try {
+    const response = await fetch('http://localhost:3001/user/me/cart/addBottle', {
+      method: 'POST',
+      headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        bottleId,
+        quantity,
+      }),
+    });
+    if (response.ok) {
+      // dispatch(getUserCartDataAction(localStorage.getItem('token')));
+    } else {
+      console.error('Errore durante l\'aggiunta della bottiglia al carrello');
+    }
+  } catch (error) {
+    console.error('Errore durante la richiesta di aggiunta al carrello:', error);
+  }
 
   }
 };
 
-
-
-
     return (
       <div className="red-berry-gin">
-        <Row className='p-2'>
+        <Row>
         <Col xs={12} className='redSpace'> 
            <h1>Red Berry Gin</h1>
            <h3>Rigorosamente Made in Italy. Bevilo in buona compagnia. Prodotto a Brescia, in una distilleria storica a conduzione famigliare, è il risultato di anni di studi e prove nell'accostamento delle migliori spezie prodotte sul suolo italiano
@@ -97,7 +113,7 @@ const handleAddToCart = () => {
       <li>Perfetto in compagnia</li>
     </ul>
     <p class="price">Prezzo: €32.50</p>
-    <Button className=" btn-primary" onClick={handleAddToCart}>Aggiungi al carrello</Button>
+    <Button className=" btn-primary" onClick={() => addToCart( 52, 1)}>Aggiungi al carrello</Button>
   </div>
 </Col>
 

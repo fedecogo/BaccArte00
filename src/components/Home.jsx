@@ -85,7 +85,7 @@ function Example() {
   <h1 className='Discover' >DISCOVER OUR SERVICE</h1>
       <Row className="ml-2 p-5 ">
         <Col xs={12} sm={4} md={4} className="first-col">
-          <Link to="/products/RedBerryGin">
+          <Link to="/products/RedBerryGin"  className="text-decoration-none">
               <div className="Trinità" style={{ backgroundImage: `url(${foto1})` }} >
               <h3>Red Berry Gin</h3>
               </div>  
@@ -93,14 +93,18 @@ function Example() {
         </Col>
        
         <Col xs={12} sm={4} md={4}>
+        <Link to="/products/ItalianBouquet"  className="text-decoration-none">
           <div className="Trinità" style={{ backgroundImage: `url(${foto2})` }}>
             <h3>Italian Bouquet</h3>
           </div>
+          </Link>  
         </Col>
         <Col xs={12} sm={4} md={4}>
+        <Link to="/create-your-custom-bottle"  className="text-decoration-none">
           <div className="Trinità" style={{ backgroundImage: `url(${foto3})` }}>
             <h3>Create Your Custum Bacca</h3>
           </div>
+          </Link>
         </Col>
       </Row>
       <Col xs={12} style={{ 

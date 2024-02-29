@@ -59,7 +59,6 @@ const MyProfile = () => {
     fetchUserData();
   }, []);
 
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     window.location.assign("http://localhost:3000/home");
@@ -130,14 +129,34 @@ const MyProfile = () => {
       console.error('Error deleting bottle:', error);
     }
   };
-const handleAddBottleToCart = async (bottleId) => {
-
-}
+  const addToCart = async (bottleId, quantity) => {
+    try {
+      const response = await fetch('http://localhost:3001/user/me/cart/addBottle', {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          bottleId,
+          quantity,
+        }),
+      });
+      if (response.ok) {
+        dispatch(getUserCartDataAction(localStorage.getItem('token')));
+      } else {
+        console.error('Errore durante l\'aggiunta della bottiglia al carrello');
+      }
+    } catch (error) {
+      console.error('Errore durante la richiesta di aggiunta al carrello:', error);
+    }
+  };
+  
 
   const user = userDataInSession[0];
   const userNameA = userDataInSession[0].name;
   const userNameB = userNameA.charAt(0).toUpperCase() + userNameA.slice(1).toLowerCase();
-  console.log(userNameB);
+
   
 
 
@@ -199,13 +218,13 @@ const handleAddBottleToCart = async (bottleId) => {
                     <Carousel responsive={responsive} autoPlay={true} autoPlaySpeed={3000} infinite={true}>
             {userBottles.map(bottle => (
               <div className="card mt-3" style={{ width: "18rem" }} key={bottle.id_bottle}>
-                <img src={bottle.logoUser} className="d-block w-100" alt="Logo User" />
+                <img src={bottle.bottigliCompleta} className="d-block w-100" alt="Logo User" />
                 <div className="card-body">
                   <h6>{bottle.sizeBottle} - {bottle.bottleContents}</h6>
                   <p><strong>Artista:</strong> {bottle.artist}</p>
                   <p><strong>Prezzo:</strong> €{bottle.price}</p>
                   <Button variant="danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
-                  <Button variant="primary"onClick={() => handleAddBottleToCart(bottle.id_bottle)}>Add To cart</Button>
+                  <Button variant="primary"onClick={() => addToCart(bottle.id_bottle,1)}>Add To cart</Button>
                 </div>
               </div>
             ))}
@@ -254,7 +273,7 @@ const handleAddBottleToCart = async (bottleId) => {
         <Carousel responsive={responsive} autoPlay={true} autoPlaySpeed={3000} infinite={true}>
 {userBottles.map(bottle => (
   <div className="card mt-3" style={{ width: "18rem" }} key={bottle.id_bottle}>
-    <img src={bottle.logoUser} className="d-block w-100" alt="Logo User" />
+    <img src={bottle.bottigliCompleta} className="d-block w-100" alt="Logo User" />
     <div className="card-body">
       <h6>{bottle.sizeBottle} - {bottle.bottleContents}</h6>
       <p><strong>Artista:</strong> {bottle.artist}</p>

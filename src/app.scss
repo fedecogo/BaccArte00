@@ -185,38 +185,46 @@ html, body {
       transform: translate(0);
    }
 }
-.BottlePreview .bottle-image {
-  max-width: 60%; 
-  height: auto; 
-}
-
-@media screen and (max-width: 768px) {
-  .BottlePreview .bottle-image {
-    width: auto; 
-    max-height: 600px; 
-  }
-}
-
-
-.BottlePreview .logo {
-  position: absolute;
-  top: 93%;
-  left: 58%;
-  z-index: 1;
-  max-width: 203px;
-}
-.BottlePreview .logo1 {
-  position: absolute;
-  top: 58%;
-  left: 60.8%;
-  z-index: 1;
-  max-width: 122px;
+.BottlePreview {
+  position: sticky;
+  top: 0; 
+  z-index: 999; 
   
-}
   .bottle-image {
-    max-width:auto;
-    height: 700px
+    max-width: 60%;
+    height: auto;
+
+    @media screen and (max-width: 768px) {
+      width: auto;
+      max-height: 600px;
+    }
   }
+
+  .logo1 {
+    position: absolute;
+    top: 45%;
+    left: 18%;
+    z-index: 3;
+    max-width: 29%;
+  }
+
+  .logo2 {
+    position: absolute;
+    top: 13%;
+    left: 23.8%;
+    z-index: 1;
+    max-width: 16%;
+  }
+
+  .etichettaScelta {
+    position: absolute;
+    top: 31%;
+    left: 11%;
+    z-index: 1;
+    max-width: 42%;
+  }
+}
+
 
   /*======================
       Login Page
@@ -422,15 +430,16 @@ html, body {
     background-repeat: no-repeat;
     filter: grayscale(100%);
     transition: all 0.3s ease-in-out;
-    height: 1200px;  
+    height: 950px;  
     &:hover {
       filter: grayscale(0%);
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
   }
   .Trinità h3 {
     padding: 30px;
-    font-size: 6.5rem;
+    font-size: 600%;
+    color: black;
   }
   
   @media (max-width: 768px) {
@@ -737,8 +746,6 @@ $font-size-large2: 60px;
   }
 }
 
-
-
   .description-column {
     background-color: #f8f9fa;
     padding: 20px;
@@ -773,3 +780,21 @@ $font-size-large2: 60px;
     margin-bottom: 10px;
   }
 }
+
+//ItalianBouquet page
+
+.BlueSpace {
+  background-color: #5DB2F3;
+  color: #fff;
+  text-align: center;
+  margin-top: 0 !important;
+  
+  @media screen and (max-width: 756px) {
+    padding: 42px 35px 65px 35px !important;
+  }
+
+  @media screen and (min-width: 757px) {
+  padding: 10% 23% 10% 23% !important;
+  }
+}
+

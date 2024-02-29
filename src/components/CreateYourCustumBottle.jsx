@@ -1,6 +1,7 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useRef } from 'react';
 import { Form, Button, Row, Col,Image } from 'react-bootstrap';
 import Swal from 'sweetalert2';
+import html2canvas from 'html2canvas';
 import { useSelector } from 'react-redux';
 import RedBerryFoto from '../components/../assets/createYouBottles/redBerry.png';
 import TransparentBottle from '../components/../assets/createYouBottles/trasparentBottle_png.png';
@@ -11,10 +12,19 @@ import wallpaper1anna from '../assets/anna/wallpaper1.webp'
 import wallpaper2anna from '../assets/anna/wallpaper2.webp'
 import mergeImages from 'merge-images';
 import { useNavigate } from 'react-router-dom';
+import etichettaCustum1 from '../assets/createYouBottles/etichetta vuota - Copy - Copy.png';
+import etichettaCustum2 from '../assets/createYouBottles/etichetta vuota - Copy - Copy - Copy.png'
+import etichettaCustum3 from '../assets/createYouBottles/etichetta vuota - Copy.png'
+import etichettaCustum4 from '../assets/createYouBottles/etichetta vuota.png'
+import { saveAs } from 'file-saver';
+
+
 
 const CreateCustomBottle = () => {
   const [sizeBottle, setSizeBottle] = useState('');
   const [bottleContents, setBottleContents] = useState('');
+  const [showLogoBody, setShowLogoBody] = useState(false);
+  const [showLogoNeck, setShowLogoNeck] = useState(false);
   const [artist, setArtist] = useState('');
   const [showImage, setShowImage] = useState('');
   const [backgroundImageViper, setBackgroundImageViper] = useState(wallpaper1viper);
@@ -22,6 +32,15 @@ const CreateCustomBottle = () => {
   const userDataInSession = useSelector((state) => state.user.user[0].avatar);
   const [avatarBase64, setAvatarBase64] = useState('');
   const navigate = useNavigate();
+  const [selectedEtichetta, setSelectedEtichetta] = useState('');
+  const [bottigli_completa, setPreviewImage] = useState(null);
+  const previewRef = useRef(null);
+
+
+
+  const handleEtichettaChange = (e) => {
+    setSelectedEtichetta(e.target.value);
+  };
 
 
   useEffect(() => {
@@ -99,15 +118,44 @@ useEffect(() => {
       });
       return; 
     }
-
-    const requestBody = {
-      sizeBottle,
-      bottleContents,
-      artist,
-    };
-
+  
     try {
-      const response = await fetch('http://localhost:3001/user/me/createYourBottle', {
+      const canvas = await html2canvas(previewRef.current);
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg'));
+  
+      const formData = new FormData();
+      formData.append('image', blob, 'bottiglia.jpg'); 
+  
+      const response = await fetch('http://localhost:3001/user/me/saveImageBottle', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        body: formData
+      });
+      
+      if (response.ok) {
+       const responseData = await response.text(); // Leggi la risposta come testo
+       setPreviewImage(responseData);
+      } else {
+        console.error('Failed to upload image');
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Immagine non caricata su Cloudinary",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+  
+      const requestBody = {
+        sizeBottle,
+        bottleContents,
+        artist,
+        bottigli_completa,
+      };
+  
+      const createBottleResponse = await fetch('http://localhost:3001/user/me/createYourBottle', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -115,25 +163,27 @@ useEffect(() => {
         },
         body: JSON.stringify(requestBody),
       });
-
-      if (!response.ok) {
+  
+      if (!createBottleResponse.ok) {
         throw new Error('Errore durante la creazione della bottiglia personalizzata');
       }
+      
       //reset form
       setSizeBottle('');
       setBottleContents('');
       setArtist('');
+      
       Swal.fire({
         icon: 'success',
         title: 'Bottiglia Creata!',
         text: 'La tua bottiglia personalizzata è stata creata con successo! Potrai vederla nella tua area personale!'
-        ,
       });
       navigate('/profile');
     } catch (error) {
       console.error('Errore durante la creazione della bottiglia personalizzata:', error);
     }
   };
+  
   const handleArtistChange = (event) => {
     setArtist(event.target.value);
     generatePreview(); 
@@ -149,8 +199,17 @@ const handleContentsChange = (event) => {
   setBottleContents(event.target.value);
   // setShowImage('');
   // generatePreview(); 
+
 };
 
+
+ const handleShowLogoBodyChange = (e) => {
+  setShowLogoBody(e.target.checked);
+};
+
+const handleShowLogoNeckChange = (e) => {
+  setShowLogoNeck(e.target.checked);
+};
 
 
   const getBackgroundStyle = () => {
@@ -184,6 +243,16 @@ const handleContentsChange = (event) => {
           <option value="JAY">Jay</option>
         </Form.Control>
       </Form.Group>
+      <Form.Group controlId="formContents">
+              <Form.Label>Etichette Default</Form.Label>
+              <Form.Control as="select" value={selectedEtichetta} onChange={handleEtichettaChange}>
+                <option value="">Select Contents</option>
+                <option value="Universe1">Space</option>
+                <option value="Universe2">Space2</option>
+                <option value="Flower">Flower</option>
+                <option value="Color">Color</option>
+              </Form.Control>
+            </Form.Group>
       <Form.Group controlId="formSize">
         <Form.Label>Size</Form.Label>
         <Form.Control as="select" value={sizeBottle} onChange={handleSizeChange}>
@@ -200,6 +269,22 @@ const handleContentsChange = (event) => {
           <option value="ITALIAN_BOUQUET">Italian Bouquet</option>
         </Form.Control>
       </Form.Group>
+      <Form.Group controlId="formShowLogoBody">
+              <Form.Check
+                type="checkbox"
+                label="Vuoi aggiungere il logo sul corpo della bottiglia?"
+                checked={showLogoBody}
+                onChange={handleShowLogoBodyChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="formShowLogoNeck">
+              <Form.Check
+                type="checkbox"
+                label="Vuoi aggiungere il logo sul collo della bottiglia?"
+                checked={showLogoNeck}
+                onChange={handleShowLogoNeckChange}
+              />
+            </Form.Group>
       <Button variant="primary" type="submit">
         Create Bottle
       </Button>
@@ -207,17 +292,20 @@ const handleContentsChange = (event) => {
   </Col>
         <Col md={6} xs={12} >
   <h3>Bottle Preview</h3>
-  <Row className='BottlePreview'>
+  <Row ref={previewRef} className='BottlePreview'>
     {showImage && (
-      <>
-        <Image src={showImage} className='bottle-image' />
-        {avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo1" />}
-        {avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo" />}
-      </>
+       <>
+       <Image src={showImage} className='bottle-image' />
+       {showLogoBody && avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo1" />}
+       {showLogoNeck && avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo2" />}
+       {selectedEtichetta === 'Universe1' && <img src={etichettaCustum1} alt="Etichetta Universe1" className="etichettaScelta" />}
+       {selectedEtichetta === 'Universe2' && <img src={etichettaCustum2} alt="Etichetta Universe2" className="etichettaScelta" />}
+       {selectedEtichetta === 'Flower' && <img src={etichettaCustum4} alt="Etichetta Flower" className="etichettaScelta" />}
+       {selectedEtichetta === 'Color' && <img src={etichettaCustum3} alt="Etichetta Color" className="etichettaScelta" />}
+     </>
     )}
   </Row>
 </Col>
-
       </Row>
     </div>
   );
