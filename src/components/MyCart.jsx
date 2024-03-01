@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'; // Importa anche useDispatch
-import { Row, Col, Button } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { Row, Col, Button, Image, Card } from 'react-bootstrap';
 import { getUserCartDataAction } from '../redux/actions/cart';
 
 const MyCart = () => {
@@ -18,15 +18,15 @@ const MyCart = () => {
     return acc;
   }, []);
 
-
   const removeFromCart = (productId) => {
   };
-const addToCart = async (bottleId, quantity) => {
+
+  const addToCart = async (bottleId, quantity) => {
     try {
       const response = await fetch('http://localhost:3001/user/me/cart/addBottle', {
         method: 'POST',
         headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -43,30 +43,60 @@ const addToCart = async (bottleId, quantity) => {
       console.error('Errore durante la richiesta di aggiunta al carrello:', error);
     }
   };
-  
+
   return (
-    
-    <Row className="justify-content-center">
-         <h1>{totCartPrice}</h1>
-      <Col md={8}>
-        <h2>Your Cart</h2>
+    <Row className="justify-content-center  ">
+      <h2>Your Cart</h2> 
+      <Col xs={12} md={8} className='dxSide'>
         {groupedCart.length === 0 ? (
           <p>Your cart is empty</p>
         ) : (
-          <ul>
+          <>
             {groupedCart.map(product => (
-              <div key={product.id_bottle} style={{border: '1px solid #ddd', margin: '10px', padding: '10px'}}>
-                <img src={product.logoUser} alt={product.artist} style={{width: "20px"}}/>
-                <h2>{product.artist}</h2>
-                <p><strong>Contenuto della bottiglia:</strong> {product.bottleContents}</p>
-                <p><strong>Prezzo:</strong> {product.price}€</p>
-                <p><strong>Quantità:</strong> {product.quantity}</p>
-                <button onClick={() => removeFromCart(product.id_bottle)}>Rimuovi dal Carrello</button>
-                <button onClick={() => addToCart(product.id_bottle, 1)}>Aggiungi un'altra Bottiglia</button> 
-              </div>
+              <Row className='DivCart' key={product.id_bottle}>
+                <Col xs={3}>
+                  <Image src={product.bottigliCompleta} alt={product.artist} className="img-fluid" />
+                </Col>
+                <Col>
+                  {product.artist !== null ? (
+                    <p><strong>Bottiglia Customizzata da:</strong> {product.artist}</p>
+                  ) : (
+                    <p><strong>Contenuto della bottiglia:</strong> {product.bottleContents}</p>
+                  )}
+                  <p><strong>Prezzo:</strong> {product.price}€</p>
+                  <p><strong>Quantità:</strong> {product.quantity}</p>
+                  <div className='d-flex flex-column '>
+                    <Button className='btnCart mb-2 ' onClick={() => addToCart(product.id_bottle, 1)} variant="outline-primary">Aggiungi un'altra Bottiglia</Button> 
+                    <Button className='btnCart' onClick={() => removeFromCart(product.id_bottle)} variant="outline-danger">Rimuovi dal Carrello</Button>
+                  </div>
+                </Col>
+              </Row>
             ))}
-          </ul>
+          </>
         )}
+      </Col>
+      <Col xs={12} md={4} className='sxSide'>
+        <Card border="primary" className='cardCart'>
+          <Card.Header>Sommario Carrello</Card.Header>
+          <Card.Body>
+            <Card.Title>Ecco i tuoi prodotti</Card.Title>
+            {groupedCart.map(product => (
+              <Row key={product.id_bottle} className='centroSommario'>
+              {product.artist !== null ? (
+                <p><strong>{product.quantity} {product.quantity > 1 ? 'Bottiglie' : 'Bottiglia'} di {product.bottleContents} Customizzata da:</strong> {product.artist}</p>
+              ) : (
+                <p><strong>{product.quantity} {product.quantity > 1 ? 'Bottiglie' : 'Bottiglia'} di:</strong> {product.bottleContents}</p>
+              )}
+             <p><strong>Prezzo per bottiglia:</strong> {product.price}€ <strong>Prezzo totale:</strong> {product.price * product.quantity}€</p>
+     
+            </Row>
+            
+            ))}
+            <hr />
+            <p><strong>Prezzo totale:</strong> {totCartPrice}</p>
+            <Button variant="outline-primary">Acquista</Button>
+          </Card.Body>
+        </Card>
       </Col>
     </Row>
   );

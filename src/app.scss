@@ -745,6 +745,20 @@ $font-size-large2: 60px;
   padding: 10% 23% 10% 23% !important;
   }
 }
+.redSpace2 {
+  background-image: url('http://res.cloudinary.com/dorr4si5z/image/upload/v1709316532/zwpi9cti6mkcpq3jwggy.webp');
+  background-position: center; 
+  color: #000000;
+  text-align: center;
+  
+  @media screen and (max-width: 756px) {
+    padding: 42px 35px 65px 35px !important;
+  }
+
+  @media screen and (min-width: 757px) {
+  padding: 10% 23% 10% 23% !important;
+  }
+}
 
   .description-column {
     background-color: #f8f9fa;
@@ -781,6 +795,105 @@ $font-size-large2: 60px;
   }
 }
 
+.divArtist{
+  width: 30%;
+  height: 50%;
+  background-color: #000000;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+}
+.fotoProfilo{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+.viperPage{
+ background-color: #000;
+ min-height: 500px !important;
+ color: #99C1DA;
+}
+.viperPage0{
+  background-image: url('http://res.cloudinary.com/dorr4si5z/image/upload/v1709314260/ratptgvsaxhfaot4wnuf.jpg');
+  background-size: cover; 
+  background-position: center; 
+ min-height: 500px !important;
+ color: #000;
+ h1 {font-size: 700% !important;
+ }}
+
+ .ig{
+  width: 80%;
+  min-height: 800px;
+  margin-top: 50px;
+ }
+//Avvassena Page
+.avvassenaPage{
+  background-color: #000;
+  min-height: 500px !important;
+  color: #99C1DA;
+}
+
+.avvassenaPage0 {
+  min-height: 500px !important;
+  background-image: url('http://res.cloudinary.com/dorr4si5z/image/upload/v1709313859/theyytl8kohsdydmp6to.jpg');
+  background-size: cover; 
+  background-position: center; 
+}
+
+.sottoTitolo {
+  background-color: #000;
+  max-width: 43%;
+
+
+ h1 {
+  font-size: 6.5rem !important;
+  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; 
+}}
+
+@media (max-width: 756px) {
+  .sottoTitolo {
+    max-width: 100%;
+  }
+
+  .sottoTitolo h1 {
+    font-size: 5rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .sottoTitolo h1 {
+    font-size: 4.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sottoTitolo h1 {
+    font-size: 3.5rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .sottoTitolo h1 {
+    font-size: 3rem !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .sottoTitolo h1 {
+    font-size: 2.5rem !important;
+  }
+}
+
+
+
+
 //ItalianBouquet page
 
 .BlueSpace {
@@ -798,3 +911,36 @@ $font-size-large2: 60px;
   }
 }
 
+
+//Cart Page
+.DivCart{
+  border: 34px !important;
+  // border: 1px solid !important;
+  margin-bottom: 10px;
+  border-radius: 33px;
+  padding: 20px;
+  background: linear-gradient(to right, rgb(255, 255, 255), #adadad65);
+  margin: 10px 0px 3% 1% !important ;
+}
+.dxSide{
+  // background-color: #0ff;
+  .btnCart{
+    width: 40%;
+  }
+}
+.sxSide{
+ 
+.cardCart{
+  width: 80% !important;
+  p{
+    margin-bottom: 0px !important;
+  }
+
+.centroSommario{
+  border-top: 1px solid rgba(0, 0, 0, 0.265); 
+  margin-bottom: 10px !important;
+}
+
+
+}
+}

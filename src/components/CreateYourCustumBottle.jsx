@@ -29,7 +29,7 @@ const CreateCustomBottle = () => {
   const [showImage, setShowImage] = useState('');
   const [backgroundImageViper, setBackgroundImageViper] = useState(wallpaper1viper);
   const [backgroundImageAnna, setBackgroundImageAnna] = useState(wallpaper2anna);
-  const userDataInSession = useSelector((state) => state.user.user[0].avatar);
+  const userDataInSession = useSelector((state) => state.user.user[0]?.avatar || null);
   const [avatarBase64, setAvatarBase64] = useState('');
   const navigate = useNavigate();
   const [selectedEtichetta, setSelectedEtichetta] = useState('');
@@ -230,7 +230,7 @@ const handleShowLogoNeckChange = (e) => {
      <div class="glitch-wrapper">
    <div class="glitch" data-glitch="Create Your Bacca">Create Your Bacca</div>
 </div>
-
+{userDataInSession ? (
       <Row className="m-5">
       <Col md={6} xs={12}>
     <Form onSubmit={handleSubmit}>
@@ -269,22 +269,26 @@ const handleShowLogoNeckChange = (e) => {
           <option value="ITALIAN_BOUQUET">Italian Bouquet</option>
         </Form.Control>
       </Form.Group>
-      <Form.Group controlId="formShowLogoBody">
-              <Form.Check
-                type="checkbox"
-                label="Vuoi aggiungere il logo sul corpo della bottiglia?"
-                checked={showLogoBody}
-                onChange={handleShowLogoBodyChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formShowLogoNeck">
-              <Form.Check
-                type="checkbox"
-                label="Vuoi aggiungere il logo sul collo della bottiglia?"
-                checked={showLogoNeck}
-                onChange={handleShowLogoNeckChange}
-              />
-            </Form.Group>
+      {userDataInSession && (
+  <>
+    <Form.Group controlId="formShowLogoBody">
+      <Form.Check
+        type="checkbox"
+        label="Vuoi aggiungere il logo sul corpo della bottiglia?"
+        checked={showLogoBody}
+        onChange={handleShowLogoBodyChange}
+      />
+    </Form.Group>
+    <Form.Group controlId="formShowLogoNeck">
+      <Form.Check
+        type="checkbox"
+        label="Vuoi aggiungere il logo sul collo della bottiglia?"
+        checked={showLogoNeck}
+        onChange={handleShowLogoNeckChange}
+      />
+    </Form.Group>
+  </>
+)}
       <Button variant="primary" type="submit">
         Create Bottle
       </Button>
@@ -293,20 +297,28 @@ const handleShowLogoNeckChange = (e) => {
         <Col md={6} xs={12} >
   <h3>Bottle Preview</h3>
   <Row ref={previewRef} className='BottlePreview'>
-    {showImage && (
-       <>
-       <Image src={showImage} className='bottle-image' />
-       {showLogoBody && avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo1" />}
-       {showLogoNeck && avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo2" />}
-       {selectedEtichetta === 'Universe1' && <img src={etichettaCustum1} alt="Etichetta Universe1" className="etichettaScelta" />}
-       {selectedEtichetta === 'Universe2' && <img src={etichettaCustum2} alt="Etichetta Universe2" className="etichettaScelta" />}
-       {selectedEtichetta === 'Flower' && <img src={etichettaCustum4} alt="Etichetta Flower" className="etichettaScelta" />}
-       {selectedEtichetta === 'Color' && <img src={etichettaCustum3} alt="Etichetta Color" className="etichettaScelta" />}
-     </>
-    )}
-  </Row>
+  {showImage && (
+    <>
+      <Image src={showImage} className='bottle-image' />
+      {userDataInSession && showLogoBody && avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo1" />}
+      {userDataInSession && showLogoNeck && avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo2" />}
+      {selectedEtichetta === 'Universe1' && <img src={etichettaCustum1} alt="Etichetta Universe1" className="etichettaScelta" />}
+      {selectedEtichetta === 'Universe2' && <img src={etichettaCustum2} alt="Etichetta Universe2" className="etichettaScelta" />}
+      {selectedEtichetta === 'Flower' && <img src={etichettaCustum4} alt="Etichetta Flower" className="etichettaScelta" />}
+      {selectedEtichetta === 'Color' && <img src={etichettaCustum3} alt="Etichetta Color" className="etichettaScelta" />}
+    </>
+  )}
+</Row>
+
 </Col>
       </Row>
+      ) : (
+        <div className="login-register-message">
+          <p>Per utilizzare tutte le funzionalità del sito, effettua il login o registrati.</p>
+          <Button variant="primary" onClick={() => navigate('/login')}>Login</Button>
+          <Button variant="primary" onClick={() => navigate('/register')}>Registrati</Button>
+        </div>
+      )}
     </div>
   );
 };

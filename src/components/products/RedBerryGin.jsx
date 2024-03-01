@@ -15,6 +15,7 @@ import cinCin from '../../assets/cinCin.png'
 import fotoFamigliaNelTempo from '../../assets/redBerry/famiglia-neltempo_1.png'
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2'; 
+import { InstagramEmbed  } from 'react-social-media-embed';
 
 
 const RedBerryGin = () => {
@@ -55,7 +56,7 @@ const addToCart = async (bottleId, quantity) => {
     return (
       <div className="red-berry-gin">
         <Row>
-        <Col xs={12} className='redSpace'> 
+        <Col xs={12} className='redSpace2'> 
            <h1>Red Berry Gin</h1>
            <h3>Rigorosamente Made in Italy. Bevilo in buona compagnia. Prodotto a Brescia, in una distilleria storica a conduzione famigliare, è il risultato di anni di studi e prove nell'accostamento delle migliori spezie prodotte sul suolo italiano
            </h3>
@@ -153,10 +154,18 @@ Tutto un peperino!</p>
             
            </Row> 
         </Col>
-        <Col xs={12}>
+        <Col xs={12} md={6}>
             <h1 className='text-center'>In Contuna Evoluzione!</h1>
             <Image src={fotoFamigliaNelTempo} alt="fotoFamigliaNelTempoImage" fluid />
             <h1 className='text-center'>To Be Continued...</h1>
+        </Col>
+        <Col xs={12} md={6}>
+            <h1 className='text-center'>Seguici su Instagram</h1>
+            <Row className='d-flex justify-content-center align-items-center text-center'>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <InstagramEmbed url="https://www.instagram.com/baccaspirits/" className='ig' />
+</div>
+</Row>
         </Col>
         </Row>
     

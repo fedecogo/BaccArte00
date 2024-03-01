@@ -14,7 +14,7 @@ import RedBerryGin from './components/products/RedBerryGin'
 import ItalianBouquet from './components/products/ItalianBouquet'
 import MyCart from './components/MyCart'
 import ViperHaze from './components/artist/ViperHaze'
-
+import Avvassena from'./components/artist/Avvassena'
 
 const App = () => (
  
@@ -29,6 +29,7 @@ const App = () => (
         <Route path="/products/RedBerryGin" element={<RedBerryGin/>} />
         <Route path="/products/ItalianBouquet" element={<ItalianBouquet/>} />
         <Route path="/artist/ViperHaze" element={<ViperHaze/>} />
+        <Route path="/artist/Avvassena" element={<Avvassena/>} />
         <Route path="/create-your-custom-bottle" element={<CreateCustomBottle />} />
         <Route path='/myCart' element={<MyCart />} />
         <Route path='*' element={<NotFound />} />

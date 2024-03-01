@@ -103,7 +103,7 @@ const NavBar = () => {
             </Col>
             <Col xs={12}>
   <Dropdown onMouseOver={handleOpenArtists} onMouseLeave={handleCloseArtists}>
-    <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products" onClick={handleCloseMenu}>
+    <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } onClick={handleCloseMenu}>
       Artisti
     </Link>
     <Dropdown.Menu className={isDarkTheme ?"dropdown-menu-light": "dropdown-menu-dark"} show={isArtistOpen}>
@@ -114,7 +114,7 @@ const NavBar = () => {
         </Link>
       </Dropdown.Item>
       <Dropdown.Item>
-        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/products/italianBouquet" onClick={handleCloseMenu}>
+        <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/artist/Avvassena" onClick={handleCloseMenu}>
           Avvassena
         </Link>
       </Dropdown.Item>

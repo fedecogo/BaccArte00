@@ -189,7 +189,7 @@ const MyProfile = () => {
                     <Row>
                         <Col md={4} className="d-flex justify-content-center">
                             <div className="profile-picture" style={{position: 'relative', borderRadius: '50%', overflow: 'hidden', width: '200px', height: '200px'}}>
-                                <img src={user.avatar} alt="Profile" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+                                <img src={user.avatar} alt="Profile" className='fotoProfilo' />
                             </div>
                         </Col>
                         <Col md={8}>
