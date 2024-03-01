@@ -882,6 +882,26 @@ html, body {
   }
 }
 
+.BlueSpace2 {
+  background-image: url("http://res.cloudinary.com/dorr4si5z/image/upload/v1709318770/rfax2gdu6c5mufhtgxtx.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #000000;
+  text-align: top;
+  min-height: 800px;
+}
+@media screen and (max-width: 756px) {
+  .BlueSpace2 {
+    padding: 42px 35px 65px 35px !important;
+  }
+}
+@media screen and (min-width: 757px) {
+  .BlueSpace2 {
+    padding: 10% 23% 10% 23% !important;
+  }
+}
+
 .DivCart {
   border: 34px !important;
   margin-bottom: 10px;

@@ -15,6 +15,7 @@ import cinCin from '../../assets/cinCin.png';
 import fotoFamigliaNelTempo from '../../assets/ib/lorenzo-vasilotta_1800x1800.jpg'
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import { InstagramEmbed  } from 'react-social-media-embed';
 
 const ItalianBouquet = () => {
   const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
@@ -54,7 +55,7 @@ const ItalianBouquet = () => {
   return (
     <div className="italian-bouquet">
       <Row>
-        <Col xs={12} className='BlueSpace'>
+        <Col xs={12} className='BlueSpace2'>
           <h1>Italian Bouquet</h1>
           <h3>L'alternativa italiana. Perfetto equilibrio di botaniche italiane selezionate e accostate tra loro con la giusta proporzione. Un liquore unico nel suo genere, ideale per la miscelazione dei tuoi drink o da gustare liscio con qualche cubetto di ghiaccio.</h3>
         </Col>
@@ -133,10 +134,30 @@ const ItalianBouquet = () => {
             </Col>
           </Row>
         </Col>
-        <Col xs={12}>
-          <h1 className='text-center'>In Continua Evoluzione!</h1>
-          <Image src={fotoFamigliaNelTempo} alt="fotoFamigliaNelTempoImage" fluid />
-          <h1 className='text-center'>To Be Continued...</h1>
+        <Col xs={12} md={6} className='mt-5'>
+            <h1 className='text-center'>La Storia</h1>
+            <Row xs={12}>
+            <Col xs={3}>
+      <Image
+        src="https://globaluserfiles.com/media/189053_14f78aa790c97e756d6a3c7acc6888cf53afccfb.png/v1/x_0,y_0,w_219,h_155/ricetta-nonna.webp"
+        alt="foto_ricetta_originale"
+        fluid 
+      />
+    </Col>
+              <Col xs={9}>
+            <p>Il taccuino di Elsa: la ricetta viene tramandata di generazioni da fine ‘800, quando nonna Elsa, nella sua casa di Stresa, sul lago Maggiore, raccolse bacche e aromi del suo orto per creare un composto che potesse allietare il marito, grande lavoratore della cava della zona. 
+La ricetta piacque così tanto al marito che decise di trascriverla sul suo taccuino delle ricette
+Ritrovata in soffitta tra vecchi libri e foto di famiglia, questa ricetta ha ripreso vita grazie a Italian Bouquet, adattata per soddisfare i palati del lavoratore e distrarlo dalle fatiche del mondo moderno</p>
+     </Col>
+            </Row>
+              </Col>
+              <Col xs={12} md={6} className='mt-5'>
+            <h1 className='text-center'>Seguici su Instagram</h1>
+            <Row className='d-flex justify-content-center align-items-center text-center'>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <InstagramEmbed url="https://www.instagram.com/baccaspirits/" className='ig' />
+</div>
+</Row>
         </Col>
       </Row>
     </div>
