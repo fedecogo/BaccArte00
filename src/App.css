@@ -362,10 +362,12 @@ html, body {
   text-align: center;
   font-size: 5rem;
   color: #000;
+  text-shadow: 2px 2px 2px #690E03;
 }
 
 .DiscoverBlack {
   color: #ffffff;
+  text-shadow: 2px 2px 2px #690E03;
   text-align: center;
   font-size: 5rem;
 }
@@ -374,10 +376,12 @@ html, body {
   text-align: center;
   font-size: 472%;
   color: #ffffff;
+  text-shadow: 2px 2px 2px #690E03;
 }
 
 .DiscoverBlack2 {
   color: #000000;
+  text-shadow: 2px 2px 2px #690E03;
   text-align: center;
   font-size: 472%;
 }
@@ -385,22 +389,26 @@ html, body {
 .TitoliDiv {
   padding: 20px;
   text-align: center;
-  color: #000000;
+  color: #ffffff;
+  text-shadow: 2px 2px 2px #000000;
   background-size: cover;
   background-position: center;
 }
 .TitoliDiv h1 {
+  background-color: rgba(105, 13, 3, 0.4235294118);
   font-size: 2.5em;
   margin-bottom: 10px;
 }
 .TitoliDiv h2 {
   font-size: 1.8em;
   margin-bottom: 300px;
+  background-color: rgba(105, 13, 3, 0.4235294118);
 }
 .TitoliDiv h3 {
   margin-top: 300px;
   font-size: 1.3em;
   margin-bottom: 5px;
+  background-color: rgba(105, 13, 3, 0.4235294118);
 }
 @media screen and (max-width: 768px) {
   .TitoliDiv {
@@ -444,6 +452,7 @@ html, body {
   padding: 30px;
   font-size: 600%;
   color: black;
+  text-shadow: 2px 2px 2px #ffffff;
 }
 
 @media (max-width: 768px) {
