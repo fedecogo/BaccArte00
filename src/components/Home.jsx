@@ -72,7 +72,7 @@ function Example() {
       )}
       <img src={isDarkTheme ? HomeGif : HomeGifDark} alt="" />
       <Row>
-  <Col className='mb-5 TitoliDiv' xs={12} style={{ backgroundImage: `url(${Sfondo})` }}>
+  <Col className=' TitoliDiv' xs={12} style={{ backgroundImage: `url(${Sfondo})` }}>
     {isUserLoggedIn ? (
       <h3>Bentornato {name}</h3>
     ) : (
@@ -82,7 +82,8 @@ function Example() {
     <h2>Produciamo e commercializziamo bevande con amore dal 2018</h2>
   </Col>
 </Row>
-  <h1 className='Discover' >DISCOVER OUR SERVICE</h1>
+<Col xs={12} className={isDarkTheme ? 'bg-white pt-5' : 'bg-black pt-5' }>
+  <h1 className={isDarkTheme ? 'Discover' : 'DiscoverBlack'}>DISCOVER OUR SERVICE</h1>
       <Row className="ml-2 p-5 ">
         <Col xs={12} sm={4} md={4} className="first-col">
           <Link to="/products/RedBerryGin"  className="text-decoration-none">
@@ -107,16 +108,18 @@ function Example() {
           </Link>
         </Col>
       </Row>
+      </Col>
       <Col xs={12} style={{ 
   backgroundImage: `url(${bacca})`,
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover'
 }}>
-  <h1 className='Discover mb-4 text-white'>La grandezza di un prodotto risiede nella sua capacità di raccontare una storia che emana bellezza, autenticità e significato</h1> 
+
+  <h1 className={isDarkTheme ? 'Discover2' : 'DiscoverBlack2'}>La grandezza di un prodotto risiede nella sua capacità di raccontare una storia che emana bellezza, autenticità e significato</h1> 
 </Col>
 
     
-      <Row className='p-5'>
+      <Row className={isDarkTheme ? 'p-5' : 'p-5 bg-black '}>
   <Col xs={12} md={4}>
     <div className="video-background">
       <div className="video-wrap">
