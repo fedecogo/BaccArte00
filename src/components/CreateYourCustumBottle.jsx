@@ -3,19 +3,20 @@ import { Form, Button, Row, Col,Image } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import html2canvas from 'html2canvas';
 import { useSelector } from 'react-redux';
-import RedBerryFoto from '../components/../assets/createYouBottles/redBerry.png';
+// import RedBerryFoto from '../components/../assets/createYouBottles/redBerry.png';
 import TransparentBottle from '../components/../assets/createYouBottles/trasparentBottle_png.png';
-import ItalianBouquetFoto from '../components/../assets/createYouBottles/italianBouquet.png';
+// import ItalianBouquetFoto from '../components/../assets/createYouBottles/italianBouquet.png';
 import wallpaper1viper from '../assets/viper/wallpaper.webp'
 import wallpaper2viper from '../assets/viper/wallpaper2.webp'
 import wallpaper1anna from '../assets/anna/wallpaper1.webp'
 import wallpaper2anna from '../assets/anna/wallpaper2.webp'
-import mergeImages from 'merge-images';
+// import mergeImages from 'merge-images';
 import { useNavigate } from 'react-router-dom';
 import etichettaCustum1 from '../assets/createYouBottles/etichetta vuota - Copy - Copy.png';
 import etichettaCustum2 from '../assets/createYouBottles/etichetta vuota - Copy - Copy - Copy.png'
 import etichettaCustum3 from '../assets/createYouBottles/etichetta vuota - Copy.png'
 import etichettaCustum4 from '../assets/createYouBottles/etichetta vuota.png'
+import etichettaCustum5 from '../assets/createYouBottles/etichetta vuota - Copy - Copy - Copy - Copy.png'
 import { saveAs } from 'file-saver';
 
 
@@ -247,6 +248,7 @@ const handleShowLogoNeckChange = (e) => {
               <Form.Label>Etichette Default</Form.Label>
               <Form.Control as="select" value={selectedEtichetta} onChange={handleEtichettaChange}>
                 <option value="">Select Contents</option>
+                <option value="Bacca">Bacca</option>
                 <option value="Universe1">Space</option>
                 <option value="Universe2">Space2</option>
                 <option value="Flower">Flower</option>
@@ -306,6 +308,7 @@ const handleShowLogoNeckChange = (e) => {
       {selectedEtichetta === 'Universe2' && <img src={etichettaCustum2} alt="Etichetta Universe2" className="etichettaScelta" />}
       {selectedEtichetta === 'Flower' && <img src={etichettaCustum4} alt="Etichetta Flower" className="etichettaScelta" />}
       {selectedEtichetta === 'Color' && <img src={etichettaCustum3} alt="Etichetta Color" className="etichettaScelta" />}
+      {selectedEtichetta === 'Bacca' && <img src={etichettaCustum5} alt="Etichetta Bacca" className="etichettaScelta" />}
     </>
   )}
 </Row>

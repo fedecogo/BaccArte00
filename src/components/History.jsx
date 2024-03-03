@@ -34,7 +34,8 @@ const History = () => {
             <hr className='mt-2'/>
           </Row>
           <Row xs={12}> 
-            <Col xs={12} md={6} className='d-flex justify-content-center align-items-center '>
+            <Col xs={12} md={6} className='d-flex justify-content-center align-items-center '
+                 style={{ minHeight: '400px'}}>
               <img
                 src={images[currentImageIndex]}
                 alt={`Immagine ${currentImageIndex}`}

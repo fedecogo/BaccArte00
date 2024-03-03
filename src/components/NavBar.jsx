@@ -98,7 +98,7 @@ const NavBar = () => {
             </Col>
             <Col xs={12}>
             <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/about" onClick={handleCloseMenu}>
-            Gli event
+            Gli eventi
           </Link>
             </Col>
             <Col xs={12}>
