@@ -952,4 +952,16 @@ html, body {
 .sxSide .cardCart .centroSommario {
   border-top: 1px solid rgba(0, 0, 0, 0.265);
   margin-bottom: 10px !important;
+}
+
+.HistoryCol1 {
+  background-image: url(https://res.cloudinary.com/dorr4si5z/image/upload/v1709480583/obwedyj80usbsfliqga5.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 700px;
+}
+@media (max-width: 768px) {
+  .HistoryCol1 {
+    min-height: 200px;
+  }
 }/*# sourceMappingURL=app.css.map */

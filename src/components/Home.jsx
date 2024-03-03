@@ -13,7 +13,7 @@ import Sfondo from '../assets/Home/20220618_202502.jpg';
 import bacca from '../assets/Home/bacca.jpg';
 import { Link } from 'react-router-dom';
 
-function Example() {
+const Home = () => {
   const [isLegalAge, setIsLegalAge] = useState(false);
   const [smShow, setSmShow] = useState(true);
   const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
@@ -153,4 +153,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default Home;

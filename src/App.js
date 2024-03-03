@@ -15,7 +15,7 @@ import ItalianBouquet from './components/products/ItalianBouquet'
 import MyCart from './components/MyCart'
 import ViperHaze from './components/artist/ViperHaze'
 import Avvassena from'./components/artist/Avvassena'
-
+import History from './components/History'
 const App = () => (
  
   <BrowserRouter>
@@ -25,6 +25,7 @@ const App = () => (
         <Route path="/login" element={<Login/>}  />
         <Route path="/register" element={<Register/>} />
         <Route path="/profile" element={<MyProfile/>}/>
+        <Route path="/history" element={<History/>}/>
         <Route path='/products' element={<ProductComponent/>} />
         <Route path="/products/RedBerryGin" element={<RedBerryGin/>} />
         <Route path="/products/ItalianBouquet" element={<ItalianBouquet/>} />
