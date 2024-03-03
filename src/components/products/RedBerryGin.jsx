@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, } from 'react';
 import { Col, Row, Carousel,Image, Button } from 'react-bootstrap';
 import imageCarousel1 from '../../assets/redBerry/IMG_2123.JPG'
 import imageCarousel2 from '../../assets/redBerry/IMG_2124.JPG'
@@ -18,8 +18,13 @@ import Swal from 'sweetalert2';
 import { InstagramEmbed  } from 'react-social-media-embed';
 
 
+
 const RedBerryGin = () => {
 const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []); 
+
 
 const addToCart = async (bottleId, quantity) => {
   if (!isUserLoggedIn) {

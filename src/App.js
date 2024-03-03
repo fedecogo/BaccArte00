@@ -16,6 +16,7 @@ import MyCart from './components/MyCart'
 import ViperHaze from './components/artist/ViperHaze'
 import Avvassena from'./components/artist/Avvassena'
 import History from './components/History'
+import Values from './components/Values'
 const App = () => (
  
   <BrowserRouter>
@@ -26,6 +27,7 @@ const App = () => (
         <Route path="/register" element={<Register/>} />
         <Route path="/profile" element={<MyProfile/>}/>
         <Route path="/history" element={<History/>}/>
+        <Route path="/values" element={<Values/>}/>
         <Route path='/products' element={<ProductComponent/>} />
         <Route path="/products/RedBerryGin" element={<RedBerryGin/>} />
         <Route path="/products/ItalianBouquet" element={<ItalianBouquet/>} />
