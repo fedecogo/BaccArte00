@@ -16,11 +16,12 @@ const Events = () => {
       ]
     },
     {
-        name: "Spirit Speed Date 1° edition",
-        images: [
-          "https://globaluserfiles.com/media/189053_22d0d2a53310a84d9b43a723bd5cf96e9afe53dc.jpeg/v1/w_1730,h_0/20231011_193350.webp",
-          "https://globaluserfiles.com/media/189053_e9e3e1cb6695bd135ab78b2e1dd06e7893a43820.jpeg/v1/w_1116,h_0/20231011_205244.webp",
-          "https://globaluserfiles.com/media/189053_621ed4f9af06fff1aeacb3a783d463d29905865b.jpeg/v1/w_1116,h_0/img_6984.webp"
+        name: "Spirit Speed Date 2° edition Turnè",
+        images: [      
+          "https://globaluserfiles.com/media/189053_ff5be9b3818203917f5e2529d57be4891d02624c.jpeg/v1/w_1116,h_0/20231011_192453.webp",
+          "https://globaluserfiles.com/media/189053_15153fc2487a2931033a120bbcdaf895a5a43721.jpeg/v1/w_1116,h_0/img_6730.webp",
+          "https://globaluserfiles.com/media/189053_d584d16f0aa329a53f00f990c6ddf18e9722e2e0.jpeg/v1/w_1116,h_0/20231011_192554.webp"
+    
         ]
       },
       {
