@@ -17,6 +17,8 @@ import ViperHaze from './components/artist/ViperHaze'
 import Avvassena from'./components/artist/Avvassena'
 import History from './components/History'
 import Values from './components/Values'
+import Events from './components/Events'
+
 const App = () => (
  
   <BrowserRouter>
@@ -28,6 +30,7 @@ const App = () => (
         <Route path="/profile" element={<MyProfile/>}/>
         <Route path="/history" element={<History/>}/>
         <Route path="/values" element={<Values/>}/>
+        <Route path="/events" element={<Events/>}/>
         <Route path='/products' element={<ProductComponent/>} />
         <Route path="/products/RedBerryGin" element={<RedBerryGin/>} />
         <Route path="/products/ItalianBouquet" element={<ItalianBouquet/>} />
