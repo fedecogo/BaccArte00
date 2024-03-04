@@ -83,7 +83,7 @@ const Home = () => {
   </Col>
 </Row>
 <Col xs={12} className={isDarkTheme ? 'bg-white pt-5' : 'bg-black pt-5' }>
-  <h1 className={isDarkTheme ? 'Discover' : 'DiscoverBlack'}>DISCOVER OUR SERVICE</h1>
+  <h1 className={isDarkTheme ? 'Discover' : 'DiscoverBlack'}>DISCOVER BACCA</h1>
       <Row className="ml-2 p-5 ">
         <Col xs={12} sm={4} md={4} className="first-col">
           <Link to="/products/RedBerryGin"  className="text-decoration-none">

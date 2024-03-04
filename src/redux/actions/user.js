@@ -14,10 +14,6 @@ export const getUserDataAction = (token) => {
 			});
 			if (userData.ok) {
 				const user = await userData.json();
-                console.log("ecco lo user nell action")
-				console.log(user)
-				console.log("ecco il token nell action")
-				console.log(token)
 				dispatch({
 						type: GET_USER_DATA,
 						payload: user,
