@@ -92,7 +92,6 @@ const Home = () => {
               </div>  
            </Link>  
         </Col>
-       
         <Col xs={12} sm={4} md={4}>
         <Link to="/products/ItalianBouquet"  className="text-decoration-none">
           <div className="Trinità" style={{ backgroundImage: `url(${foto2})` }}>
@@ -103,7 +102,7 @@ const Home = () => {
         <Col xs={12} sm={4} md={4}>
         <Link to="/create-your-custom-bottle"  className="text-decoration-none">
           <div className="Trinità" style={{ backgroundImage: `url(${foto3})` }}>
-            <h3>Create Your Custum Bacca</h3>
+            <h3>Create Your Custom Bacca</h3>
           </div>
           </Link>
         </Col>
@@ -117,8 +116,6 @@ const Home = () => {
 
   <h1 className={isDarkTheme ? 'Discover2' : 'DiscoverBlack2'}>La grandezza di un prodotto risiede nella sua capacità di raccontare una storia che emana bellezza, autenticità e significato</h1> 
 </Col>
-
-    
       <Row className={isDarkTheme ? 'p-5' : 'p-5 bg-black '}>
   <Col xs={12} md={4}>
     <div className="video-background">

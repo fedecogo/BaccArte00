@@ -397,6 +397,7 @@ const MyProfile = () => {
                       <p><strong>Artista:</strong> {bottle.artist}</p>
                       <p><strong>Prezzo:</strong> €{bottle.price}</p>
                       <Button variant="danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
+                      <Button variant="primary" onClick={() => addToCart(bottle.id_bottle, 1)}>Add To cart</Button>
                     </div>
                   </div>
                 ))}

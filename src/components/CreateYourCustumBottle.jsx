@@ -1,5 +1,5 @@
 import React, { useState,useEffect,useRef } from 'react';
-import { Form, Button, Row, Col,Image } from 'react-bootstrap';
+import { Form, Button, Row, Col,Image,Spinner } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import html2canvas from 'html2canvas';
 import { useSelector } from 'react-redux';
@@ -18,6 +18,7 @@ import etichettaCustum3 from '../assets/createYouBottles/etichetta vuota - Copy.
 import etichettaCustum4 from '../assets/createYouBottles/etichetta vuota.png'
 import etichettaCustum5 from '../assets/createYouBottles/etichetta vuota - Copy - Copy - Copy - Copy.png'
 import { saveAs } from 'file-saver';
+import annaTras from '../assets/createYouBottles/annaTras.png';
 
 
 
@@ -36,8 +37,11 @@ const CreateCustomBottle = () => {
   const [selectedEtichetta, setSelectedEtichetta] = useState('');
   const [bottigli_completa, setPreviewImage] = useState(null);
   const previewRef = useRef(null);
+  const [uploading, setUploading] = useState(false);
 
 
+  const wallpaper3anna = "http://res.cloudinary.com/dorr4si5z/image/upload/v1709583624/lnpg7rscjppml5m0wwpr.png";
+  const wallpaper4anna = "http://res.cloudinary.com/dorr4si5z/image/upload/v1709584047/zix7mz6ul9x0eai5hntx.jpg";
 
   const handleEtichettaChange = (e) => {
     setSelectedEtichetta(e.target.value);
@@ -84,13 +88,15 @@ useEffect(() => {
 
   useEffect(() => {
     if (artist === 'ANNA') {
+      const wallpapersAnna = [wallpaper1anna, wallpaper2anna, wallpaper3anna, wallpaper4anna];
       const timer = setTimeout(() => {
-        setBackgroundImageAnna(backgroundImageAnna === wallpaper1anna ? wallpaper2anna : wallpaper1anna);
-      }, 5000); 
-      return () => clearTimeout(timer); 
+        const newIndex = (wallpapersAnna.indexOf(backgroundImageAnna) + 1) % wallpapersAnna.length;
+        setBackgroundImageAnna(wallpapersAnna[newIndex]);
+      }, 5000);
+      return () => clearTimeout(timer);
     }
-  }
-  , [artist, backgroundImageAnna]);
+  }, [artist, backgroundImageAnna]);
+  
 
 
   const generatePreview = async () => {
@@ -121,6 +127,7 @@ useEffect(() => {
     }
   
     try {
+      setUploading(true);
       const canvas = await html2canvas(previewRef.current);
       const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg'));
   
@@ -136,7 +143,7 @@ useEffect(() => {
       });
       
       if (response.ok) {
-       const responseData = await response.text(); // Leggi la risposta come testo
+       const responseData = await response.text(); 
        setPreviewImage(responseData);
       } else {
         console.error('Failed to upload image');
@@ -166,9 +173,16 @@ useEffect(() => {
       });
   
       if (!createBottleResponse.ok) {
+        setUploading(false);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `C'è stato un problema con la creazione dalla bottiglia, riprova`,
+        });
+        
         throw new Error('Errore durante la creazione della bottiglia personalizzata');
       }
-      
+      setUploading(false);
       //reset form
       setSizeBottle('');
       setBottleContents('');
@@ -233,7 +247,7 @@ const handleShowLogoNeckChange = (e) => {
 </div>
 {userDataInSession ? (
       <Row className="m-5">
-      <Col md={6} xs={12}>
+      <Col md={6} xs={12} className='d-flex justify-content-center align-items-center '>
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formArtist">
         <Form.Label>Artist</Form.Label>
@@ -295,9 +309,9 @@ const handleShowLogoNeckChange = (e) => {
         Create Bottle
       </Button>
     </Form>
+    {uploading && <Spinner animation="border" role="status"> </Spinner>}
   </Col>
-        <Col md={6} xs={12} >
-  <h3>Bottle Preview</h3>
+        <Col md={6} xs={12} className='d-flex justify-content-center align-items-center '>
   <Row ref={previewRef} className='BottlePreview'>
   {showImage && (
     <>
@@ -309,6 +323,7 @@ const handleShowLogoNeckChange = (e) => {
       {selectedEtichetta === 'Flower' && <img src={etichettaCustum4} alt="Etichetta Flower" className="etichettaScelta" />}
       {selectedEtichetta === 'Color' && <img src={etichettaCustum3} alt="Etichetta Color" className="etichettaScelta" />}
       {selectedEtichetta === 'Bacca' && <img src={etichettaCustum5} alt="Etichetta Bacca" className="etichettaScelta" />}
+      {artist === 'ANNA' && <img src={annaTras} alt="Etichetta Bacca" className="etichettaScelta" />}
     </>
   )}
 </Row>

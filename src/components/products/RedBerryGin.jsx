@@ -159,7 +159,7 @@ Tutto un peperino!</p>
             
            </Row> 
         </Col>
-        <Col xs={12} md={6}>
+        <Col xs={12} md={6} className='bg-white'>
             <h1 className='text-center'>In Contuna Evoluzione!</h1>
             <Image src={fotoFamigliaNelTempo} alt="fotoFamigliaNelTempoImage" fluid />
             <h1 className='text-center'>To Be Continued...</h1>

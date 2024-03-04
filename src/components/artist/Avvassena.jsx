@@ -31,6 +31,18 @@ const Avvassena = () => {
           </p>
         </Col>
       </Row>
+
+      <Row style={{ backgroundImage: "url('http://res.cloudinary.com/dorr4si5z/image/upload/v1709573434/ddwtt2khhiorqlqyjypv.png')", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}> 
+       <h1 className='text-center mt-5'>Ecco le Bottiglie create da Avvassena:</h1>
+        <Col xs={12} md={6}>
+         <img src="http://res.cloudinary.com/dorr4si5z/image/upload/v1709573857/mtjqhln2yd1t767umyfe.png" alt="" />
+        </Col>
+        <Col xs={12} md={6}>
+           <img src="http://res.cloudinary.com/dorr4si5z/image/upload/v1709573857/mtjqhln2yd1t767umyfe.png" alt="" />
+         </Col>
+      </Row>
+
+
       <Row className='avvassenaPage0 d-flex justify-content-center align-items-center text-center'>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <InstagramEmbed url="https://www.instagram.com/avvassena/" className='ig' />

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const History = () => {
+  const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [
     "http://res.cloudinary.com/dorr4si5z/image/upload/v1709482670/viofa9p1ogbrvppfmt7t.jpg",
     "http://res.cloudinary.com/dorr4si5z/image/upload/v1709482346/sr8v67rpcb8l0r2dyold.jpg",
     "http://res.cloudinary.com/dorr4si5z/image/upload/v1709482389/op57pggqttbahwaatsi1.jpg"
   ];
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,7 +22,7 @@ const History = () => {
 
   return (
     <>
-      <Container>
+      <Container className={isDarkTheme ? 'bg-white pt-5' : 'bg-black pt-5 text-white ' }>
         <Row xs={12} className='HistoryCol1'>
         </Row>  
         <Row>
