@@ -841,6 +841,24 @@ html, body {
   margin-top: 50px;
 }
 
+.slower {
+  transition-duration: 4s !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.sottoTitolo.animated2 {
+  animation: fadeIn 2s ease-out;
+}
+
 .avvassenaPage {
   background-color: #000;
   min-height: 500px !important;
@@ -965,6 +983,18 @@ html, body {
   .HistoryCol1 {
     min-height: 200px;
   }
+}
+
+.animated {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 2s ease;
+  font-size: 20px;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .maps-box {
