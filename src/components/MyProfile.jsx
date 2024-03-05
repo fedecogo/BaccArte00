@@ -398,6 +398,11 @@ const MyProfile = () => {
                   <h1 className='text-center'>All User Bottles</h1>
                 </Col>
               </Row>
+              {/* <Row> Aggiungi Un Bar
+                
+                
+                 </Row> */}
+              <Row>
               <h5 className="text-center mt-4">Ti sei dato all'arte anche tu? Ecco le tue Bottiglie Custums</h5>
               <Carousel responsive={responsive} autoPlay={true} autoPlaySpeed={3000} infinite={true}>
                 {userBottles.map(bottle => (
@@ -413,6 +418,7 @@ const MyProfile = () => {
                   </div>
                 ))}
               </Carousel>
+              </Row>
             </>
           )}
 

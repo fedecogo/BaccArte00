@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { animateScroll as scroll } from 'react-scroll';
 
 const History = () => {
   const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
@@ -20,6 +19,19 @@ const History = () => {
     return () => clearInterval(interval);
   }, []);
 
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const column = document.querySelector('.animated-column');
+      if (column) {
+        column.classList.add('show');
+      }
+    }, 1000);
+  
+    return () => clearTimeout(timer);
+  }, []);
+  
+
   useEffect(() => {
     const handleScroll = () => {
       const paragraphElements = document.querySelectorAll('.paragraph');
@@ -36,14 +48,10 @@ const History = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // const scrollToTop = () => {
-  //   scroll.scrollToTop();
-  // };
-
   return (
     <>
-      <Container className={isDarkTheme ? 'bg-white pt-5' : 'bg-black pt-5 text-white'}>
-        <Row xs={12} className='HistoryCol1'>
+      <Container className={isDarkTheme ? 'bg-white pt-5 ' : 'bg-black pt-5 text-white'}>
+        <Row className='HistoryCol1 animated-column '>
         </Row>
         <Row>
           <h1 className='text-center mt-5 mb-5'>La Nostra Storia</h1>
@@ -62,6 +70,7 @@ const History = () => {
                 src={images[currentImageIndex]}
                 alt={`Immagine ${currentImageIndex}`}
                 style={{ maxWidth: '100%', maxHeight: '400px', height: 'auto' }}
+                className="" 
               />
             </Col>
             <Col xs={12} md={6} className='d-flex justify-content-center align-items-center tex-center'>

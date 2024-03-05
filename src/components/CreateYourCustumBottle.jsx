@@ -232,8 +232,6 @@ const handleShowLogoNeckChange = (e) => {
         return { backgroundImage: `url(${backgroundImageViper})` };
       case 'ANNA':
         return { backgroundImage: `url(${backgroundImageAnna})` };
-      case 'JAY':
-        return { backgroundColor: 'blue' };
       default:
         return {};
     }
@@ -252,9 +250,8 @@ const handleShowLogoNeckChange = (e) => {
         <Form.Label>Artist</Form.Label>
         <Form.Control as="select" value={artist} onChange={handleArtistChange}>
           <option value="">Select Artist</option>
-          <option value="VIPER">Viper</option>
-          <option value="ANNA">Anna</option>
-          <option value="JAY">Jay</option>
+          <option value="VIPER">Viperhaze</option>
+          <option value="ANNA">Avvassena</option>
         </Form.Control>
       </Form.Group>
       <Form.Group controlId="formContents">

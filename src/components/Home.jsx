@@ -31,6 +31,22 @@ const Home = () => {
 
   useEffect(avoidModalIfLogged, [isUserLoggedIn]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const paragraphElements = document.querySelectorAll('.paragraph');
+      paragraphElements.forEach(paragraph => {
+        const paragraphPosition = paragraph.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (paragraphPosition < windowHeight * 0.75) {
+          paragraph.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleConfirmLegalAge = () => {
     setIsLegalAge(true);
     setSmShow(false);
@@ -86,7 +102,7 @@ const Home = () => {
       <Row className="ml-2 p-5 ">
         <Col xs={12} sm={4} md={4} className="first-col">
           <Link to="/products/RedBerryGin"  className="text-decoration-none">
-              <div className="Trinità" style={{ backgroundImage: `url(${foto1})` }} >
+              <div className="Trinità " style={{ backgroundImage: `url(${foto1})` }} >
               <h3>Red Berry Gin</h3>
               </div>  
            </Link>  
