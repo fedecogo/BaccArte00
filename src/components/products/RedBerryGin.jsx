@@ -63,8 +63,8 @@ const RedBerryGin = () => {
     <div className="red-berry-gin">
       <Row>
         <Col xs={12} className='redSpace2'>
-          <h1>Red Berry Gin</h1>
-          <h3>Rigorosamente Made in Italy. Bevilo in buona compagnia. Prodotto a Brescia, in una distilleria storica a conduzione famigliare, è il risultato di anni di studi e prove nell'accostamento delle migliori spezie prodotte sul suolo italiano
+          <h1 id='ombra1'>Red Berry Gin</h1>
+          <h3 id='ombra2'>Rigorosamente Made in Italy. Bevilo in buona compagnia. Prodotto a Brescia, in una distilleria storica a conduzione famigliare, è il risultato di anni di studi e prove nell'accostamento delle migliori spezie prodotte sul suolo italiano
           </h3>
         </Col>
         <Col xs={12} md={6}>

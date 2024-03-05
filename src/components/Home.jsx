@@ -62,8 +62,7 @@ const Home = () => {
               </Button>
               <Button
                 onClick={() => (window.location.href = 'https://www.google.com')}
-                className="ms-2"
-              >
+                className="ms-2">
                 No
               </Button>
             </Modal.Body>

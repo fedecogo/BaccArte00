@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Modal, Button } from 'react-bootstrap';
+import { Container, Row, Col, Modal, Button, Carousel } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const Events = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [counter, setCounter] = useState(0);
+  const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
+
 
   const events = [
     {
@@ -88,27 +90,30 @@ const Events = () => {
     setSelectedEvent(null);
   };
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCounter((prevCounter) => (prevCounter + 1) % 3); 
-    }, 2000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <Container>
       <Row>
-        <h1 className='text-center'>Eventi</h1>
+        <h1 className='text-center text-white mt-5 mb-5'>Eventi</h1>
         {events.map((event, index) => (
-          <Col key={index} xs={12} sm={6} md={4} lg={3} className='mb-3'>
-       
-<div className='event-card' onClick={() => handleEventClick(event)} style={{minHeight: '500px', backgroundImage: `url(${event.images[counter]})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-  <div className='event-overlay'>
-    <h5>{event.name}</h5>
-  </div>
-</div>
-
+          <Col key={index} xs={12} sm={6} md={4} className='mb-3'>
+            <div className='event-card'>
+              <Carousel interval={2500} indicators={false} prevIcon={<span aria-hidden="true" className="carousel-control-prev-icon" />} nextIcon={<span aria-hidden="true" className="carousel-control-next-icon" />}>
+                {event.images.map((image, idx) => (
+                  <Carousel.Item key={idx}>
+                    <img
+                      className="d-block w-100 carousel-image"
+                      src={image}
+                      alt={`Event ${idx + 1}`}
+                      onClick={() => handleEventClick(event)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  </Carousel.Item>
+                ))}
+              </Carousel>
+              <div className='event-overlay'>
+                <h5 id='h5' className='text-center'>{event.name}</h5>
+              </div>
+            </div>
           </Col>
         ))}
       </Row>
@@ -133,4 +138,3 @@ const Events = () => {
 }
 
 export default Events;
-

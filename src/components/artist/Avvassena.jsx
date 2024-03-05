@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { InstagramEmbed } from 'react-social-media-embed';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 const Avvassena = () => {
+  const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
   useEffect(() => {
     const handleScroll = () => {
       const elements = document.querySelectorAll('.animated');
@@ -19,6 +22,42 @@ const Avvassena = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const addToCart = async (bottleId, quantity) => {
+    if (!isUserLoggedIn) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Devi effettuare l'accesso per aggiungere al carrello!"
+      });
+    } else {
+      try {
+        const response = await fetch('http://localhost:3001/user/me/cart/addBottle', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            bottleId,
+            quantity,
+          }),
+        });
+        if (response.ok) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Bottiglia aggiunta al carrello!',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        } else {
+          console.error("Errore durante l'aggiunta della bottiglia al carrello");
+        }
+      } catch (error) {
+        console.error('Errore durante la richiesta di aggiunta al carrello:', error);
+      }
+    }
+  };
+
   return (
     <>
     <Row className='avvassenaPage0 d-flex justify-content-center align-items-center text-center'>
@@ -34,7 +73,7 @@ const Avvassena = () => {
         </Col>
         <Col className='mt-5 mb-5' xs={12} md={6}>
           <p className='paragraph animated'>
-            Avvassena (n. 1998) è un’artista e designer multidisciplinare con sede a Milano (Italia).
+            Avvassena classe 98 è un’artista e designer multidisciplinare con sede a Milano.
             Curiosità e propensione all’ascolto danno vita alla sua inarrestabile ed eclettica creatività, che si esprime in opere d’arte di molteplici livelli visivi e comunicativi.
             Ha conseguito la laurea triennale in Interior Design al Politecnico di Milano e la laurea magistrale in Communication Design.
             Ha esposto in diverse città europee e collabora con riviste, marchi e aziende internazionali, con l’obiettivo di portare il messaggio dell’arte a tutti. Inoltre, crea installazioni annuali su temi sociali (cancro al seno, violenza contro le donne, uso delle armi...) con la collaborazione di ricercatori e organizzazioni non-profit.
@@ -60,6 +99,7 @@ const Avvassena = () => {
   <Col xs={12} md={6} className="d-none d-md-block">
     <img className='animated slower' src="http://res.cloudinary.com/dorr4si5z/image/upload/v1709573857/mtjqhln2yd1t767umyfe.png" alt="" />
   </Col>
+  <Button className=" btn-primary" onClick={() => addToCart(259, 1)}>Aggiungi al carrello</Button>
 </Row>
 
       <Row className='avvassenaPage0 d-flex justify-content-center align-items-center text-center'>

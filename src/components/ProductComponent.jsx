@@ -29,13 +29,12 @@ const ProductComponent = () => {
 
     return (
         <Container className={isDarkTheme ? "bg-white text-dark" : "text-white"}>
-            <Row className='TitoliDiv'>
+            <Row className={isDarkTheme ? "TitoliDiv2" : "TitoliDiv"}>
                 <h1 className='text-center mt-5'>Scopri lo spirito Bacca </h1>
-                <h2 id='h2i' className='text-center'>Degustando i nostri prodotti</h2>
-                <h4 className='text-center mt-5'>Puoi Assaggiare i nostri prodotti qui</h4>
-                <Mapp />
+                <h2 id='h2i' className='text-center'>Degustando i nostri prodotti qui :</h2>
+             <Mapp />
             </Row>
-            <Row className='TitoliDiv'>
+            <Row className={isDarkTheme ? "TitoliDiv2" : "TitoliDiv"}>
                 <h1 className='text-center mb-5'>Oppure Acquistali Dal Nostro Shop e Gustati i FunnyMoments</h1>
                 <Col xs={12} sm={6} md={6} className="first-col">
                     <Link to="/products/RedBerryGin" className="text-decoration-none">

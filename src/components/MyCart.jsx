@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Button, Image, Card } from 'react-bootstrap';
 import { getUserCartDataAction } from '../redux/actions/cart';
+import Swal from 'sweetalert2';
 
 const MyCart = () => {
   const dispatch = useDispatch(); 
@@ -36,6 +37,12 @@ const MyCart = () => {
       });
       if (response.ok) {
         dispatch(getUserCartDataAction(localStorage.getItem('token')));
+        Swal.fire({
+          icon: 'success',
+          title: 'Bottiglia aggiunta al carrello!',
+          showConfirmButton: false,
+          timer: 1500
+        });
       } else {
         console.error('Errore durante l\'aggiunta della bottiglia al carrello');
       }
@@ -45,8 +52,8 @@ const MyCart = () => {
   };
 
   return (
-    <Row className="justify-content-center  ">
-      <h2>Your Cart</h2> 
+    <Row className="justify-content-center ">
+      <h2 className='text-center mt-5 mb-5 text-white'>Your Cart</h2> 
       <Col xs={12} md={8} className='dxSide'>
         {groupedCart.length === 0 ? (
           <p>Your cart is empty</p>

@@ -12,7 +12,7 @@ import imageCarousel9 from '../../assets/ib/lorenzo-vasilotta_1800x1800.jpg'
 import imageCarousel10 from '../../assets/ib/lorenzo-vasilotta_1800x1800.jpg'
 import imageCarousel11 from '../../assets/ib/lorenzo-vasilotta_1800x1800.jpg'
 import cinCin from '../../assets/cinCin.png';
-import fotoFamigliaNelTempo from '../../assets/ib/lorenzo-vasilotta_1800x1800.jpg'
+// import fotoFamigliaNelTempo from '../../assets/ib/lorenzo-vasilotta_1800x1800.jpg'
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import { InstagramEmbed  } from 'react-social-media-embed';
@@ -55,9 +55,9 @@ const ItalianBouquet = () => {
   return (
     <div className="italian-bouquet">
       <Row>
-        <Col xs={12} className='BlueSpace2'>
-          <h1>Italian Bouquet</h1>
-          <h3>L'alternativa italiana. Perfetto equilibrio di botaniche italiane selezionate e accostate tra loro con la giusta proporzione. Un liquore unico nel suo genere, ideale per la miscelazione dei tuoi drink o da gustare liscio con qualche cubetto di ghiaccio.</h3>
+        <Col xs={12} className='BlueSpace2 text-center'>
+        <h1 id='ombra1'>Italian Bouquet</h1>
+        <h3 id='ombra2'>L'alternativa italiana. Perfetto equilibrio di botaniche italiane selezionate e accostate tra loro con la giusta proporzione. Un liquore unico nel suo genere, ideale per la miscelazione dei tuoi drink o da gustare liscio con qualche cubetto di ghiaccio.</h3>
         </Col>
         <Col xs={12} md={6}>
           <Carousel slide={false} data-bs-theme="dark">

@@ -12,10 +12,6 @@ export const getUserCartDataAction = (token) => {
 			});
 if (userData.ok) {
     const userCart = await userData.json();
-    console.log("ecco lo user nell action")
-    console.log(userCart)
-    console.log("ecco il token nell action")
-    console.log(token)
     dispatch({
         type: GET_USER_CART_DATA,
         payload: userCart

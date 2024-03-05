@@ -54,6 +54,13 @@ html, body {
     flex-direction: column;
     background-color: #000000;
   }
+  #rootWhite {
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+  }
   
   .footerCs {
     text-align: center;
@@ -308,14 +315,12 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: #f8f9fa;
   }
   .register-container-darkTheme{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: #000000;
   }
   
@@ -326,6 +331,7 @@ html, body {
     border-radius: 20px;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 150px;
   }
   .register-form-darkTheme {
     max-width: 500px;
@@ -416,6 +422,50 @@ html, body {
       margin-bottom: 300px; 
     background-color: #690d036c;
     }
+  
+    h3 {
+      margin-top: 300px;
+      font-size: 1.3em; 
+      margin-bottom: 5px; 
+    background-color: #690d036c;
+    }
+  
+    @media screen and (max-width: 768px) {
+      padding: 10px; 
+  
+      h1 {
+        font-size: 2em; 
+      }
+  
+      h2 {
+        font-size: 1.5em; 
+      }
+  
+      h3 {
+        font-size: 1.1em;
+      }
+    }
+  }
+  .TitoliDiv2 {
+    padding: 20px;
+    text-align: center;
+    color: #000000; 
+    text-shadow: 2px 2px 2px #ffffff;
+    background-size: cover;
+    background-position: center;
+  
+    h1 {
+      background-color: #690d036c;
+      font-size: 2.5em; 
+      margin-bottom: 10px;
+    }
+  
+    h2 {
+      font-size: 1.8em; 
+      margin-bottom: 300px; 
+    background-color: #690d036c;
+    }
+    
   
     h3 {
       margin-top: 300px;
@@ -773,6 +823,17 @@ $font-size-large2: 60px;
   padding: 10% 23% 10% 23% !important;
   }
 }
+#ombra1{
+  color: #FFFFFF;
+  text-shadow: 2px 2px 2px #000000;
+  background-color: #00000052;
+  font-size: 50px;
+}
+#ombra2{
+  color: #FFFFFF;
+  text-shadow: 2px 2px 2px #000000;
+  background-color: #00000052;
+}
 .redSpace2 {
   background-image: url('http://res.cloudinary.com/dorr4si5z/image/upload/v1709316532/zwpi9cti6mkcpq3jwggy.webp');
   background-position: center; 
@@ -996,6 +1057,10 @@ $font-size-large2: 60px;
  
 .cardCart{
   width: 80% !important;
+  position: sticky;
+  top: 20px; 
+  height: calc(80vh - 40px); 
+  overflow-y: auto; 
   p{
     margin-bottom: 0px !important;
   }
@@ -1040,9 +1105,17 @@ $font-size-large2: 60px;
   height: 400px; 
 }
 #h2i{
-  margin-bottom: 0px !important;
+  margin-bottom: 10px !important;
 }
 
 
-
-
+//eventi page
+.carousel-image {
+  height: 500px; 
+  object-fit: cover; 
+}
+#h5{
+  background-color: #000000;
+  font-size: 30px !important;
+  color: #ffffff;
+}

@@ -8,8 +8,6 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
      case GET_USER_DATA:
-      console.log(action);
-      console.log(state);
 
      return {
 		...state,

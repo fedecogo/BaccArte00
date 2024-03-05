@@ -17,7 +17,6 @@ import etichettaCustum2 from '../assets/createYouBottles/etichetta vuota - Copy 
 import etichettaCustum3 from '../assets/createYouBottles/etichetta vuota - Copy.png'
 import etichettaCustum4 from '../assets/createYouBottles/etichetta vuota.png'
 import etichettaCustum5 from '../assets/createYouBottles/etichetta vuota - Copy - Copy - Copy - Copy.png'
-import { saveAs } from 'file-saver';
 import annaTras from '../assets/createYouBottles/annaTras.png';
 
 
@@ -28,7 +27,7 @@ const CreateCustomBottle = () => {
   const [showLogoBody, setShowLogoBody] = useState(false);
   const [showLogoNeck, setShowLogoNeck] = useState(false);
   const [artist, setArtist] = useState('');
-  const [showImage, setShowImage] = useState('');
+  const [showImage, setShowImage] = useState(TransparentBottle);
   const [backgroundImageViper, setBackgroundImageViper] = useState(wallpaper1viper);
   const [backgroundImageAnna, setBackgroundImageAnna] = useState(wallpaper2anna);
   const userDataInSession = useSelector((state) => state.user.user[0]?.avatar || null);
@@ -313,8 +312,7 @@ const handleShowLogoNeckChange = (e) => {
   </Col>
         <Col md={6} xs={12} className='d-flex justify-content-center align-items-center '>
   <Row ref={previewRef} className='BottlePreview'>
-  {showImage && (
-    <>
+ 
       <Image src={showImage} className='bottle-image' />
       {userDataInSession && showLogoBody && avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo1" />}
       {userDataInSession && showLogoNeck && avatarBase64 && <img src={avatarBase64} alt="User Logo" className="logo2" />}
@@ -324,8 +322,8 @@ const handleShowLogoNeckChange = (e) => {
       {selectedEtichetta === 'Color' && <img src={etichettaCustum3} alt="Etichetta Color" className="etichettaScelta" />}
       {selectedEtichetta === 'Bacca' && <img src={etichettaCustum5} alt="Etichetta Bacca" className="etichettaScelta" />}
       {artist === 'ANNA' && <img src={annaTras} alt="Etichetta Bacca" className="etichettaScelta" />}
-    </>
-  )}
+   
+  
 </Row>
 
 </Col>

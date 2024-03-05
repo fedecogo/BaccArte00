@@ -192,6 +192,12 @@ const MyProfile = () => {
       });
       if (response.ok) {
         dispatch(getUserCartDataAction(localStorage.getItem('token')));
+        Swal.fire({
+          icon: 'success',
+          title: 'Bottiglia aggiunta al carrello!',
+          showConfirmButton: false,
+          timer: 1500
+        });
       } else {
         console.error('Errore durante l\'aggiunta della bottiglia al carrello');
       }
@@ -242,8 +248,10 @@ const MyProfile = () => {
                   <p><strong>Type of User:</strong> {user.typeOfUser}</p>
                 </Col>
               </Row>
-              <button className="btn btn-primary mt-3 btn-block" onClick={handleImageUpload}>Upload Image</button>
-              <input type="file" accept="image/*" onChange={handleFileChange} className="btn mt-3 btn-block" />
+              <Row>
+                <Col xs={12} md={4}>
+                <h1>Vuoi Cambiare il tuo Logo?</h1>
+              <input type="file" accept="image/*" onChange={handleFileChange} className="btn btn-outline-primary mt-3 btn-block" />
               {uploading && <Spinner animation="border" role="status">
                 <span className="sr-only">Loading...</span>
               </Spinner>}
@@ -251,11 +259,17 @@ const MyProfile = () => {
                 <div className="alert alert-success mt-3" role="alert">
                   Image uploaded successfully!
                 </div>
-              )}
-              <Link to="/mycart" className="btn btn-primary mt-3 btn-block">
-                <FaShoppingCart /> {userCartTot}
+              )} 
+                <Button variant="outline-primary" className="mt-3 btn-block" onClick={handleImageUpload}>Carica Immagine</Button>
+                </Col>
+                <Col xs={12} md={4}>
+                <Link to="/mycart" className="btn btn-outline-primary mt-3 mx-3 btn-block">
+                <FaShoppingCart /> {userCartTot}€
               </Link>
-              <button className="btn btn-danger mt-3 btn-block" onClick={handleLogout}>Logout</button>
+              <Button variant="outline-danger" className="mt-3 btn-block" onClick={handleLogout}>Esci</Button>
+             </Col>
+              </Row>
+             
               <h5 className="text-center mt-4">Your Bottles:</h5>
               <Carousel responsive={responsive} autoPlay={true} autoPlaySpeed={3000} infinite={true}>
                 {userBottles.map(bottle => (
@@ -265,8 +279,8 @@ const MyProfile = () => {
                       <h6>{bottle.sizeBottle} - {bottle.bottleContents}</h6>
                       <p><strong>Artista:</strong> {bottle.artist}</p>
                       <p><strong>Prezzo:</strong> €{bottle.price}</p>
-                      <Button variant="danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
-                      <Button variant="primary" onClick={() => addToCart(bottle.id_bottle, 1)}>Add To cart</Button>
+                      <Button variant="outline-danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
+                      <Button variant="outline-primary" onClick={() => addToCart(bottle.id_bottle, 1)}>Add To cart</Button>
                     </div>
                   </div>
                 ))}
@@ -287,28 +301,25 @@ const MyProfile = () => {
                 </Col>
               </Row>
               <Row>
-                <Col>
-                  <button className="btn btn-primary mt-3 btn-block" onClick={handleImageUpload}>Upload Image</button>
+                <Col xs={12} md={4}>
+                <h1>Vuoi Cambiare il tuo Logo?</h1>
+              <input type="file" accept="image/*" onChange={handleFileChange} className="btn btn-outline-primary mt-3 btn-block" />
+              {uploading && <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+              </Spinner>}
+              {uploadSuccess && (
+                <div className="alert alert-success mt-3" role="alert">
+                  Image uploaded successfully!
+                </div>
+              )} 
+                <Button variant="outline-primary" className="mt-3 btn-block" onClick={handleImageUpload}>Carica Immagine</Button>
                 </Col>
-                <Col>
-                  <input type="file" accept="image/*" onChange={handleFileChange} className="btn mt-3 btn-block" />
-                  {uploading && <Spinner animation="border" role="status">
-                    <span className="sr-only">Loading...</span>
-                  </Spinner>}
-                  {uploadSuccess && (
-                    <div className="alert alert-success mt-3" role="alert">
-                      Image uploaded successfully!
-                    </div>
-                  )}
-                </Col>
-                <Col>
-                  <Link to="/mycart" className="btn btn-primary mt-3 btn-block">
-                    <FaShoppingCart /> {userCartTot} $
-                  </Link>
-                </Col>
-                <Col>
-                  <button className="btn btn-danger mt-3 btn-block" onClick={handleLogout}>Logout</button>
-                </Col>
+                <Col xs={12} md={4}>
+                <Link to="/mycart" className="btn btn-outline-primary mt-3 mx-3 btn-block">
+                <FaShoppingCart /> {userCartTot}€
+              </Link>
+              <Button variant="outline-danger" className="mt-3 btn-block" onClick={handleLogout}>Esci</Button>
+             </Col>
               </Row>
               <Row>
                 <Col xs={12} md={8} className='mt-5' >
@@ -396,8 +407,8 @@ const MyProfile = () => {
                       <h6>{bottle.sizeBottle} - {bottle.bottleContents}</h6>
                       <p><strong>Artista:</strong> {bottle.artist}</p>
                       <p><strong>Prezzo:</strong> €{bottle.price}</p>
-                      <Button variant="danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
-                      <Button variant="primary" onClick={() => addToCart(bottle.id_bottle, 1)}>Add To cart</Button>
+                      <Button variant="outline-danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
+                      <Button variant="outline-primary" onClick={() => addToCart(bottle.id_bottle, 1)}>Add To cart</Button>
                     </div>
                   </div>
                 ))}

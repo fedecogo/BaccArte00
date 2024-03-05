@@ -70,7 +70,7 @@ const Register = () => {
     return (
         <div className={isDarkTheme ? "register-container":"register-container-darkTheme"}>
           <Form
-          className={isDarkTheme ?"register-form":"register-form-darkTheme"}
+          className={isDarkTheme ?"register-form mt-5":"register-form-darkTheme"}
             onSubmit={handleSubmit}
           >
             <h1 className={isDarkTheme ? "register-title":"register-title-darkTheme"}>Register</h1>
