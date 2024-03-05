@@ -18,7 +18,6 @@ function MapComponent() {
                     const response = await fetch('http://localhost:3001/user/allBars', {
                         method: 'GET',
                         headers: {
-                            'Authorization': `Bearer ${token}`,
                             'Content-Type': 'application/json'
                         }
                     });

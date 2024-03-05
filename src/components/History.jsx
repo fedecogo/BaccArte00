@@ -62,7 +62,7 @@ const History = () => {
             <Col xs={12} md={6} className='d-flex justify-content-center align-items-center'>
               <img style={{ maxWidth: '100%', maxHeight: '400px', height: 'auto' }} src="http://res.cloudinary.com/dorr4si5z/image/upload/v1709481744/q4gmoysiojx3ihaq3jgl.png" alt="ImmagineAlbori" />
             </Col>
-            <hr className='mt-2' />
+            <hr className='hr3' />
           </Row>
           <Row xs={12}>
             <Col xs={12} md={6} className='d-flex justify-content-center align-items-center '>
@@ -76,7 +76,7 @@ const History = () => {
             <Col xs={12} md={6} className='d-flex justify-content-center align-items-center tex-center'>
               <p className='paragraph animated'>Con perseveranza e investimenti, il trio è riuscito ad entrare nel mercato con il primo prodotto: RED Berry gin, venduto in circa 40 negozi della Lombardia nel suo primo anno di vita, ricevendo commenti positivi e elogi da parte dei responsabili del locale e dei clienti. Successivamente verrà affiancato da altri prodotti, tutti made in Italy e caratterizzati dalla ricerca di materie prime di qualità.</p>
             </Col>
-            <hr className='mt-2' />
+            <hr className='hr3' />
           </Row>
           <Row xs={12}>
             <Col xs={12} md={6} className='d-flex justify-content-center align-items-center tex-center'>
@@ -85,7 +85,7 @@ const History = () => {
             <Col xs={12} md={6} className='d-flex justify-content-center align-items-center tex-center'>
               <img style={{ maxWidth: '100%', maxHeight: '400px', height: 'auto' }} src="http://res.cloudinary.com/dorr4si5z/image/upload/v1709483246/gclvjbfun2nz2aon4cgg.jpg" alt="ImmagineAlbori" />
             </Col>
-            <hr className='mt-2' />
+            <hr className='hr3' />
           </Row>
         </Row>
       </Container>

@@ -401,6 +401,16 @@ html, body {
   text-shadow: 2px 2px 2px #000000;
   background-size: cover;
   background-position: center;
+  opacity: 0;
+  animation: fadeIn 4s ease-in-out forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .TitoliDiv h1 {
   background-color: rgba(105, 13, 3, 0.4235294118);
@@ -1008,13 +1018,45 @@ html, body {
   }
 }
 
+.cartTitle {
+  font-size: 40px;
+  margin-top: 50px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .DivCart {
   border: 34px !important;
   margin-bottom: 10px;
-  border-radius: 33px;
+  border-radius: 12px;
   padding: 20px;
-  background: linear-gradient(to right, rgb(255, 255, 255), rgba(173, 173, 173, 0.3960784314));
+  background: linear-gradient(to right, rgb(255, 255, 255), rgba(173, 173, 173, 0));
+  max-height: 300px;
   margin: 10px 0px 3% 1% !important;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+.DivCart img {
+  max-height: 280px;
+}
+.DivCart p {
+  font-size: 23px;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .dxSide .btnCart {
@@ -1022,18 +1064,31 @@ html, body {
 }
 
 .sxSide .cardCart {
-  width: 80% !important;
+  width: 70% !important;
   position: sticky;
   top: 20px;
   height: calc(80vh - 40px);
   overflow-y: auto;
+  background-color: #000;
+  color: #FFFFFF;
+  opacity: 0;
+  animation: fadeIn 4s ease-in-out forwards;
 }
 .sxSide .cardCart p {
+  font-size: 18px;
   margin-bottom: 0px !important;
 }
 .sxSide .cardCart .centroSommario {
   border-top: 1px solid rgba(0, 0, 0, 0.265);
   margin-bottom: 10px !important;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .HistoryCol1 {
@@ -1081,6 +1136,18 @@ html, body {
   transform: scale(1.1);
 }
 
+@media (max-width: 768px) {
+  .hr3 {
+    margin-top: 100px !important;
+    margin-bottom: 100px !important;
+  }
+}
+@media (min-width: 768px) {
+  .hr3 {
+    margin-top: 250px !important;
+    margin-bottom: 250px !important;
+  }
+}
 .maps-box {
   height: 400px;
 }

@@ -53,7 +53,7 @@ const MyCart = () => {
 
   return (
     <Row className="justify-content-center ">
-      <h2 className='text-center mt-5 mb-5 text-white'>Your Cart</h2> 
+      <h2 className='text-center mt-5 mb-5 text-white cartTitle'>Your Cart</h2> 
       <Col xs={12} md={8} className='dxSide'>
         {groupedCart.length === 0 ? (
           <p>Your cart is empty</p>
@@ -84,9 +84,9 @@ const MyCart = () => {
       </Col>
       <Col xs={12} md={4} className='sxSide'>
         <Card border="primary" className='cardCart'>
-          <Card.Header>Sommario Carrello</Card.Header>
+          <Card.Header className='text-center mt-3'>Sommario Carrello</Card.Header>
           <Card.Body>
-            <Card.Title>Ecco i tuoi prodotti</Card.Title>
+            <Card.Title className='mb-5'>Ecco i tuoi prodotti:</Card.Title>
             {groupedCart.map(product => (
               <Row key={product.id_bottle} className='centroSommario'>
               {product.artist !== null ? (
@@ -100,7 +100,7 @@ const MyCart = () => {
             
             ))}
             <hr />
-            <p><strong>Prezzo totale:</strong> {totCartPrice}</p>
+            <p><strong>Prezzo totale:</strong> {totCartPrice}€</p>
             <Button variant="outline-primary">Acquista</Button>
           </Card.Body>
         </Card>

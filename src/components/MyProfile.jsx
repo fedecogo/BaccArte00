@@ -142,9 +142,21 @@ const MyProfile = () => {
         });
       } else {
         console.error('Failed to upload image');
+        setUploading(false);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Devi effettuare l'accesso per aggiungere al carrello!"
+        });
       }
     } catch (error) {
       console.error('Error uploading image:', error);
+      setUploading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Devi effettuare l'accesso per aggiungere al carrello!"
+      });
     } finally {
       setUploading(false);
       const token = localStorage.getItem('token');
@@ -397,10 +409,11 @@ const MyProfile = () => {
                   )}
                 </Col>
                 <Col className='d-flex align-items-center justify-content-center '>
-                  <h1 className='text-center'>All User</h1>
+                  <h1 className='text-center'>Elenco di tutti gli utenti registrati:</h1>
                 </Col>
                 <hr />
                 <Col xs={12} md={8} >
+                  <h1>Elenco di tutte le bottiglie nel database</h1>
                   {adminBottles.length > 0 ? (
                     <Table striped bordered hover className={isDarkTheme ? "table-light" : "table-dark text-light"}>
                       <thead>
@@ -434,12 +447,7 @@ const MyProfile = () => {
                     <p>No bottles found.</p>
                   )}
                 </Col>
-                <Col>
-                  <h1 className='text-center'>All User Bottles</h1>
-                </Col>
-              </Row>
-              <Row>
-  <Col xs={12} md={8}>
+               <Col xs={12} md={4}>
     <h3>Add New Bar</h3>
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="barName">
@@ -454,9 +462,12 @@ const MyProfile = () => {
         <Form.Label>Indirizzo</Form.Label>
         <Form.Control type="text" placeholder="Inserisci l'indirizzo del bar" value={barAddress} onChange={(e) => setBarAddress(e.target.value)} />
       </Form.Group>
-      <Button variant="primary" type="submit">Aggiungi Bar</Button>
+      <Button variant="primary" type="submit" className='mt-3'>Aggiungi Bar</Button>
     </Form>
   </Col>
+              </Row>
+              <Row>
+  
 </Row>
 
               <Row>
