@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-multi-carousel';
-import { Row, Col, Spinner, Button, Table } from 'react-bootstrap';
+import { Row, Col, Spinner, Button, Table, Form } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import { getUserDataAction } from '../redux/actions/user';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -13,6 +13,9 @@ const MyProfile = () => {
   const [imageFile, setImageFile] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [barName, setBarName] = useState('');
+  const [barPosition, setBarPosition] = useState('');
+  const [barAddress, setBarAddress] = useState('');
   const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
   const userDataInSession = useSelector((state) => state.user.user);
   const userCartTot = useSelector((state) => state.cart.totCartPrice);
@@ -204,6 +207,43 @@ const MyProfile = () => {
     } catch (error) {
       console.error('Errore durante la richiesta di aggiunta al carrello:', error);
     }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  
+    const formData = {
+      name: barName,
+      position: barPosition.split(",").map(parseFloat),
+      via: barAddress
+    };
+  
+    fetch('http://localhost:3001/user/addBar', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
+      Swal.fire({
+        icon: 'success',
+        title: 'Bar aggiunto al correttamente alla mappa!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   };
 
   const user = userDataInSession[0];
@@ -398,10 +438,27 @@ const MyProfile = () => {
                   <h1 className='text-center'>All User Bottles</h1>
                 </Col>
               </Row>
-              {/* <Row> Aggiungi Un Bar
-                
-                
-                 </Row> */}
+              <Row>
+  <Col xs={12} md={8}>
+    <h3>Add New Bar</h3>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="barName">
+        <Form.Label>Nome del Bar</Form.Label>
+        <Form.Control type="text" placeholder="Inserisci il nome del bar" value={barName} onChange={(e) => setBarName(e.target.value)} />
+      </Form.Group>
+      <Form.Group controlId="barPosition">
+        <Form.Label>Posizione</Form.Label>
+        <Form.Control type="text" placeholder="Inserisci la posizione del bar (latitudine, longitudine)" value={barPosition} onChange={(e) => setBarPosition(e.target.value)} />
+      </Form.Group>
+      <Form.Group controlId="barAddress">
+        <Form.Label>Indirizzo</Form.Label>
+        <Form.Control type="text" placeholder="Inserisci l'indirizzo del bar" value={barAddress} onChange={(e) => setBarAddress(e.target.value)} />
+      </Form.Group>
+      <Button variant="primary" type="submit">Aggiungi Bar</Button>
+    </Form>
+  </Col>
+</Row>
+
               <Row>
               <h5 className="text-center mt-4">Ti sei dato all'arte anche tu? Ecco le tue Bottiglie Custums</h5>
               <Carousel responsive={responsive} autoPlay={true} autoPlaySpeed={3000} infinite={true}>

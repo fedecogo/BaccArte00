@@ -41,6 +41,12 @@ const ItalianBouquet = () => {
           }),
         });
         if (response.ok) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Bottiglia aggiunta al carrello!',
+            showConfirmButton: false,
+            timer: 1500
+          });
           // dispatch(getUserCartDataAction(localStorage.getItem('token')));
         } else {
           console.error('Errore durante l\'aggiunta della bottiglia al carrello');
@@ -102,7 +108,7 @@ const ItalianBouquet = () => {
             <p>L'intera filiera è 100% Made in Italy, dalla raccolta delle essenze fino all'imbottigliamento.</p>
             <p>Il taccuino di Elsa: una ricetta tramandata di generazioni che ha ripreso vita grazie a Italian Bouquet, adattata per soddisfare i palati del lavoratore e distrarlo dalle fatiche del mondo moderno.</p>
             <p class="price">Prezzo: €32.50</p>
-            <Button className="btn-primary" onClick={() => handleAddToCart( 53, 1)}>Aggiungi al carrello</Button>
+            <Button className="btn-primary" onClick={() => handleAddToCart( 2, 1)}>Aggiungi al carrello</Button>
   
           </div>
         </Col>

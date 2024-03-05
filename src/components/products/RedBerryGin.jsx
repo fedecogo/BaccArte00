@@ -120,7 +120,7 @@ const RedBerryGin = () => {
               <li>Perfetto in compagnia</li>
             </ul>
             <p className="price">Prezzo: €32.50</p>
-            <Button className=" btn-primary" onClick={() => addToCart(52, 1)}>Aggiungi al carrello</Button>
+            <Button className=" btn-primary" onClick={() => addToCart(1, 1)}>Aggiungi al carrello</Button>
           </div>
         </Col>
         <Col xs={12} className='redSpace'>

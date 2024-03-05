@@ -99,7 +99,7 @@ const Avvassena = () => {
   <Col xs={12} md={6} className="d-none d-md-block">
     <img className='animated slower' src="http://res.cloudinary.com/dorr4si5z/image/upload/v1709573857/mtjqhln2yd1t767umyfe.png" alt="" />
   </Col>
-  <Button className=" btn-primary" onClick={() => addToCart(259, 1)}>Aggiungi al carrello</Button>
+  <Button className=" btn-primary" onClick={() => addToCart(3, 1)}>Aggiungi al carrello</Button>
 </Row>
 
       <Row className='avvassenaPage0 d-flex justify-content-center align-items-center text-center'>
