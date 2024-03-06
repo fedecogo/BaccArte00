@@ -1,5 +1,5 @@
 import React, { useState,useEffect,useRef } from 'react';
-import { Form, Button, Row, Col,Image,Spinner } from 'react-bootstrap';
+import { Form, Button, Row, Col,Image,Spinner , Card} from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import html2canvas from 'html2canvas';
 import { useSelector } from 'react-redux';
@@ -37,6 +37,7 @@ const CreateCustomBottle = () => {
   const [bottigli_completa, setPreviewImage] = useState(null);
   const previewRef = useRef(null);
   const [uploading, setUploading] = useState(false);
+  const isDarkTheme = useSelector(state => state.theme.isDarkTheme);
 
 
   const wallpaper3anna = "http://res.cloudinary.com/dorr4si5z/image/upload/v1709583624/lnpg7rscjppml5m0wwpr.png";
@@ -244,30 +245,44 @@ const handleShowLogoNeckChange = (e) => {
 </div>
 {userDataInSession ? (
       <Row className="m-5">
-      <Col md={6} xs={12} className='d-flex justify-content-center align-items-center '>
+    <Col md={6} xs={12} className='d-flex justify-content-center align-items-center'>
+    <Card className={isDarkTheme ? "text-black bg-white" : "text-white bg-dark"}>
+  <Card.Body>
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formArtist">
         <Form.Label>Artist</Form.Label>
-        <Form.Control as="select" value={artist} onChange={handleArtistChange}>
+        <Form.Control 
+          as="select" 
+          value={artist} 
+          onChange={handleArtistChange} 
+          className={isDarkTheme ? "text-black bg-white" : "text-white bg-dark"}>
           <option value="">Select Artist</option>
           <option value="VIPER">Viperhaze</option>
           <option value="ANNA">Avvassena</option>
         </Form.Control>
       </Form.Group>
       <Form.Group controlId="formContents">
-              <Form.Label>Etichette Default</Form.Label>
-              <Form.Control as="select" value={selectedEtichetta} onChange={handleEtichettaChange}>
-                <option value="">Select Contents</option>
-                <option value="Bacca">Bacca</option>
-                <option value="Universe1">Space</option>
-                <option value="Universe2">Space2</option>
-                <option value="Flower">Flower</option>
-                <option value="Color">Color</option>
-              </Form.Control>
-            </Form.Group>
+        <Form.Label>Etichette Default</Form.Label>
+        <Form.Control 
+          as="select" 
+          value={selectedEtichetta} 
+          onChange={handleEtichettaChange} 
+          className={isDarkTheme ? "text-black bg-white" : "text-white bg-dark"}>
+          <option value="">Select Contents</option>
+          <option value="Bacca">Bacca</option>
+          <option value="Universe1">Space</option>
+          <option value="Universe2">Space2</option>
+          <option value="Flower">Flower</option>
+          <option value="Color">Color</option>
+        </Form.Control>
+      </Form.Group>
       <Form.Group controlId="formSize">
         <Form.Label>Size</Form.Label>
-        <Form.Control as="select" value={sizeBottle} onChange={handleSizeChange}>
+        <Form.Control 
+          as="select" 
+          value={sizeBottle} 
+          onChange={handleSizeChange} 
+          className={isDarkTheme ? "text-black bg-white" : "text-white bg-dark"}>
           <option value="">Select Size</option>
           <option value="SETTANTA_CL">70cl</option>
           <option value="DIECI_CL">10cl</option>
@@ -275,38 +290,47 @@ const handleShowLogoNeckChange = (e) => {
       </Form.Group>
       <Form.Group controlId="formContents">
         <Form.Label>Bottle Contents</Form.Label>
-        <Form.Control as="select" value={bottleContents} onChange={handleContentsChange}>
+        <Form.Control 
+          as="select" 
+          value={bottleContents} 
+          onChange={handleContentsChange} 
+          className={isDarkTheme ? "text-black bg-white" : "text-white bg-dark"}>
           <option value="">Select Contents</option>
           <option value="RED_BERRY_GIN">Red Berry Gin</option>
           <option value="ITALIAN_BOUQUET">Italian Bouquet</option>
         </Form.Control>
       </Form.Group>
       {userDataInSession && (
-  <>
-    <Form.Group controlId="formShowLogoBody">
-      <Form.Check
-        type="checkbox"
-        label="Vuoi aggiungere il logo sul corpo della bottiglia?"
-        checked={showLogoBody}
-        onChange={handleShowLogoBodyChange}
-      />
-    </Form.Group>
-    <Form.Group controlId="formShowLogoNeck">
-      <Form.Check
-        type="checkbox"
-        label="Vuoi aggiungere il logo sul collo della bottiglia?"
-        checked={showLogoNeck}
-        onChange={handleShowLogoNeckChange}
-      />
-    </Form.Group>
-  </>
-)}
-      <Button variant="primary" type="submit">
+        <>
+          <Form.Group controlId="formShowLogoBody">
+            <Form.Check
+              type="checkbox"
+              label="Vuoi aggiungere il logo sul corpo della bottiglia?"
+              checked={showLogoBody}
+              onChange={handleShowLogoBodyChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="formShowLogoNeck">
+            <Form.Check
+              type="checkbox"
+              label="Vuoi aggiungere il logo sul collo della bottiglia?"
+              checked={showLogoNeck}
+              onChange={handleShowLogoNeckChange}
+            />
+          </Form.Group>
+        </>
+      )}
+      <Button variant="outline-primary" type="submit" className='mt-3'>
         Create Bottle
       </Button>
     </Form>
     {uploading && <Spinner animation="border" role="status"> </Spinner>}
-  </Col>
+  </Card.Body>
+</Card>
+
+
+
+    </Col>
         <Col md={6} xs={12} className='d-flex justify-content-center align-items-center '>
   <Row ref={previewRef} className='BottlePreview'>
  

@@ -121,11 +121,11 @@ const NavBar = () => {
     </Dropdown.Menu>
   </Dropdown>
 </Col>
-            <Col xs={12}>
+            {/* <Col xs={12}>
             <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/about" onClick={handleCloseMenu}>
             Lavora Con noi
           </Link>
-            </Col>
+            </Col> */}
             <Col xs={12}>
           <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/create-your-custom-bottle" onClick={handleCloseMenu}>
            Create Bacca
