@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../redux/actions/theme';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaArrowUp } from 'react-icons/fa';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import LogoDarkTheme from '../assets/LogoDarkTheme.png'
 import LogoLightTheme from '../assets/LogoLightTheme.png'
@@ -17,9 +17,23 @@ const NavBar = () => {
   //close direttamente nel btn
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isArtistOpen, setIsArtistOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   //reduxtheme
   const dispatch = useDispatch();
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
 
   const handleThemeChange = () => {
     dispatch(toggleTheme());
@@ -41,7 +55,12 @@ const NavBar = () => {
     setIsArtistOpen(false);
   };
 
-  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
 
 
@@ -49,10 +68,17 @@ const NavBar = () => {
   return (
     <div className="container-fluid" id="cc">
       <div className={isDarkTheme ? "navbarr":"navbar-darkTheme"}>
+      <div class="navbar__menu-circle d-flex justify-content-center align-items-center">
         <button className="navbar__menu-button" onClick={() => setIsMenuOpen(true)}>
-          <FaBars id={isDarkTheme ? "black":"white"} />
+          <FaBars id="white" />
         </button>
-          <Link className="navbar__logo" to="/home">
+        </div>
+        {isScrolled && (
+          <div className="navbar__menu-circle2 d-flex justify-content-center align-items-center" onClick={scrollToTop}>
+            <FaArrowUp size={24} color="white" />
+          </div>
+        )}
+          <Link className="navbar__logo" to="/">
             <img id="image" src={isDarkTheme ? LogoLightTheme : LogoDarkTheme} alt="Logo" className="logo" />
           </Link>
       </div>
@@ -62,7 +88,7 @@ const NavBar = () => {
         <Offcanvas.Body className="d-flex flex-column justify-content-between">
           <Row>
             <Col xs={12} className='DivCanvas-Light'>
-              <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/home" onClick={handleCloseMenu}>
+              <Link className={isDarkTheme ? "menu-link-light" :"menu-link-dark" } to="/" onClick={handleCloseMenu}>
                 Home
               </Link>
             </Col>         

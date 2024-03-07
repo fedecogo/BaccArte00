@@ -111,7 +111,7 @@ const MyProfile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.assign("http://localhost:3000/home");
+    window.location.assign("http://localhost:3000/");
   };
 
   const handleFileChange = (event) => {
@@ -146,7 +146,7 @@ const MyProfile = () => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Devi effettuare l'accesso per aggiungere al carrello!"
+          text: "Immagine Troppo pesante , non è stata caricata con successo!"
         });
       }
     } catch (error) {
@@ -155,7 +155,7 @@ const MyProfile = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Devi effettuare l'accesso per aggiungere al carrello!"
+        text: "Immagine Troppo pesante , non è stata caricata con successo!"
       });
     } finally {
       setUploading(false);
@@ -297,7 +297,7 @@ const MyProfile = () => {
                   <h2>{userNameB} {user.surname}</h2>
                   <p><strong>Email:</strong> {user.email}</p>
                   <p><strong>Phone Number:</strong> {user.phoneNumber}</p>
-                  <p><strong>Type of User:</strong> {user.typeOfUser}</p>
+            
                 </Col>
               </Row>
               <Row>
@@ -332,7 +332,7 @@ const MyProfile = () => {
                       <p><strong>Artista:</strong> {bottle.artist}</p>
                       <p><strong>Prezzo:</strong> €{bottle.price}</p>
                       <Button variant="outline-danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
-                      <Button variant="outline-primary" onClick={() => addToCart(bottle.id_bottle, 1)}>Add To cart</Button>
+                      <Button variant="outline-primary" className='ms-2'  onClick={() => addToCart(bottle.id_bottle, 1)}>Add To cart</Button>
                     </div>
                   </div>
                 ))}
@@ -448,7 +448,7 @@ const MyProfile = () => {
                   )}
                 </Col>
                <Col xs={12} md={4}>
-    <h3>Add New Bar</h3>
+    <h3>Aggiungi un nuovo bar</h3>
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="barName">
         <Form.Label>Nome del Bar</Form.Label>
@@ -462,7 +462,7 @@ const MyProfile = () => {
         <Form.Label>Indirizzo</Form.Label>
         <Form.Control type="text" placeholder="Inserisci l'indirizzo del bar" value={barAddress} onChange={(e) => setBarAddress(e.target.value)} />
       </Form.Group>
-      <Button variant="primary" type="submit" className='mt-3'>Aggiungi Bar</Button>
+      <Button variant="outline-primary"type="submit" className='mt-3'>Aggiungi Bar</Button>
     </Form>
   </Col>
               </Row>
@@ -481,7 +481,7 @@ const MyProfile = () => {
                       <p><strong>Artista:</strong> {bottle.artist}</p>
                       <p><strong>Prezzo:</strong> €{bottle.price}</p>
                       <Button variant="outline-danger" onClick={() => handleDeleteBottle(bottle.id_bottle)}>Delete</Button>
-                      <Button variant="outline-primary" onClick={() => addToCart(bottle.id_bottle, 1)}>Add To cart</Button>
+                      <Button variant="outline-primary"className='ms-2'  onClick={() => addToCart(bottle.id_bottle, 1)}>Add To cart</Button>
                     </div>
                   </div>
                 ))}

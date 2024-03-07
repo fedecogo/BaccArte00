@@ -39,7 +39,7 @@ export default function Footer() {
         <Row className='mb-4'>
           <Col>
             <ul className='list-unstyled'>
-              <li><Link to='/home' className='text-white'>Home</Link></li>
+              <li><Link to='/' className='text-white'>Home</Link></li>
               <li><Link to='/FAQs' className='text-white'>FAQs</Link></li>
               <li><Link to='/privacy-policy' className='text-white'>Privacy Policy</Link></li>
               <li><Link to='/terms-and-conditions' className='text-white'>Terms & Conditions</Link></li>

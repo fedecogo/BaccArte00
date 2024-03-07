@@ -105,7 +105,7 @@ const RedBerryGin = () => {
           </Carousel>
         </Col>
         <Col xs={12} md={6}>
-          <div className="description-column">
+          <div className="description-column bg-black text-white">
             <p>E' un gin morbido e beverino, con note profumate e gradevoli. Alla bevuta risulta dolce nel cocktail ma è gradevole anche bevuto liscio o con ghiaccio.</p>
             <p>Non è un gin di massa: è a produzione limitata e 100% italiano. Vuole essere il tuo compagno di serata: condividilo con i tuoi amici e passa con loro i migliori #Funny Moments!</p>
             <p>SCHEDA TECNICA</p>
@@ -120,21 +120,23 @@ const RedBerryGin = () => {
               <li>Perfetto in compagnia</li>
             </ul>
             <p className="price">Prezzo: €32.50</p>
-            <Button className=" btn-primary" onClick={() => addToCart(1, 1)}>Aggiungi al carrello</Button>
+            <Button variant="outline-primary" onClick={() => addToCart(1, 1)}>Aggiungi al carrello</Button>
           </div>
         </Col>
         <Col xs={12} className='redSpace'>
-          <Row xs={12}>
-            <Col xs={3}>
+          <Row xs={12} className='mb-1'>
+            <Col xs={2}></Col>
+            <Col xs={1}>
               <Image src={cinCin} alt="cinCinImage" fluid />
             </Col>
             <Col xs={6} className='text-center'>
               <h1>Da Bere Rigorosamente In Buona Compagnia</h1>
             </Col>
-            <Col xs={3}>
+            <Col xs={1}>
               <Image src={cinCin} alt="cinCinImage" fluid />
             </Col>
           </Row>
+          <hr />
           <Row xs={12}>
             <Col xs={12} md={4}>
               <h3>Il Gin Dei Giovani</h3>
@@ -158,18 +160,19 @@ const RedBerryGin = () => {
           </Row>
         </Col>
         <Col xs={12} md={6} className='bg-white'>
-          <h1 className='text-center'>In Contuna Evoluzione!</h1>
+          <h1 className='text-center mt-5'>In Contuna Evoluzione!</h1>
           <Image src={fotoFamigliaNelTempo} alt="fotoFamigliaNelTempoImage" fluid />
           <h1 className='text-center'>To Be Continued...</h1>
         </Col>
         <Col xs={12} md={6}>
-          <h1 className='text-center'>Seguici su Instagram</h1>
+          <h1 className='text-center text-white mt-5'>Seguici su Instagram</h1>
           <Row className='d-flex justify-content-center align-items-center text-center'>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <InstagramEmbed url="https://www.instagram.com/baccaspirits/" className='ig' />
             </div>
           </Row>
         </Col>
+        <h1 className='text-center text-white mt-5 mb-5'>To Be Continued...</h1>
       </Row>
     </div>
   );

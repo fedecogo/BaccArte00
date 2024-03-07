@@ -19,7 +19,7 @@ const Login = () => {
       localStorage.setItem('token', data.token);
       dispatch(getUserDataAction(data.token));
       dispatch(getUserCartDataAction(data.token));
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       console.error('Errore durante il login:', error);
     }

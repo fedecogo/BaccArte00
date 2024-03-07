@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row, Carousel, Image, Button } from 'react-bootstrap';
 import imageCarousel1 from '../../assets/ib/lorenzo-vasilotta_1800x1800.jpg'
 import imageCarousel2 from '../../assets/ib/lorenzo-vasilotta_1800x1800.jpg'
@@ -19,6 +19,9 @@ import { InstagramEmbed  } from 'react-social-media-embed';
 
 const ItalianBouquet = () => {
   const isUserLoggedIn = useSelector((state) => state.user.loggedIn);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleAddToCart = async (bottleId, quantity) => {
     if (!isUserLoggedIn) {
@@ -73,58 +76,34 @@ const ItalianBouquet = () => {
             <Carousel.Item interval={800}>
               <img className="d-block w-100" src={imageCarousel2} alt="Seconda foto" />
             </Carousel.Item>
-            <Carousel.Item interval={800}>
-              <img className="d-block w-100" src={imageCarousel3} alt="Terza foto" />
-            </Carousel.Item>
-            <Carousel.Item interval={800}>
-              <img className="d-block w-100" src={imageCarousel4} alt="Quarta foto" />
-            </Carousel.Item>
-            <Carousel.Item interval={800}>
-              <img className="d-block w-100" src={imageCarousel5} alt="Quinta foto" />
-            </Carousel.Item>
-            <Carousel.Item interval={800}>
-              <img className="d-block w-100" src={imageCarousel6} alt="Sesta foto" />
-            </Carousel.Item>
-            <Carousel.Item interval={800}>
-              <img className="d-block w-100" src={imageCarousel7} alt="Settima foto" />
-            </Carousel.Item>
-            <Carousel.Item interval={800}>
-              <img className="d-block w-100" src={imageCarousel8} alt="Ottava foto" />
-            </Carousel.Item>
-            <Carousel.Item interval={800}>
-              <img className="d-block w-100" src={imageCarousel9} alt="Nona foto" />
-            </Carousel.Item>
-            <Carousel.Item interval={800}>
-              <img className="d-block w-100" src={imageCarousel10} alt="Decima foto" />
-            </Carousel.Item>
-            <Carousel.Item interval={800}>
-              <img className="d-block w-100" src={imageCarousel11} alt="Undicesima foto" />
-            </Carousel.Item>
+           
           </Carousel>
         </Col>
         <Col xs={12} md={6}>
-          <div className="description-column">
+          <div className="description-column bg-black text-white">
             <p>Italian Bouquet è un liquore equilibrato, frutto dell'accurato rapporto degli estratti di thè, bergamotto e sambuco, con l'aggiunta di un tocco segreto. Morbido e gradevole, è perfetto per la miscelazione o da gustare liscio con qualche cubetto di ghiaccio.</p>
             <p>L'intera filiera è 100% Made in Italy, dalla raccolta delle essenze fino all'imbottigliamento.</p>
             <p>Il taccuino di Elsa: una ricetta tramandata di generazioni che ha ripreso vita grazie a Italian Bouquet, adattata per soddisfare i palati del lavoratore e distrarlo dalle fatiche del mondo moderno.</p>
             <p class="price">Prezzo: €32.50</p>
-            <Button className="btn-primary" onClick={() => handleAddToCart( 2, 1)}>Aggiungi al carrello</Button>
+            <Button variant="outline-primary " onClick={() => handleAddToCart( 2, 1)}>Aggiungi al carrello</Button>
   
           </div>
         </Col>
 
         <Col xs={12} className='BlueSpace'>
-          <Row xs={12}>
-            <Col xs={3}>
+          <Row xs={12} className='mb-1'>
+          <Col xs={2}></Col>
+            <Col xs={1}>
               <Image src={cinCin} alt="cinCinImage" fluid />
             </Col>
             <Col xs={6} className='text-center'>
               <h1>Da Bere Rigorosamente In Buona Compagnia</h1>
             </Col>
-            <Col xs={3}>
+            <Col xs={1}>
               <Image src={cinCin} alt="cinCinImage" fluid />
             </Col>
           </Row>
+          <hr />
           <Row xs={12}>
             <Col xs={12} md={4}>
               <h3>Il Liquore Dell'Armonia</h3>
@@ -140,7 +119,7 @@ const ItalianBouquet = () => {
             </Col>
           </Row>
         </Col>
-        <Col xs={12} md={6} className='mt-5'>
+        <Col xs={12} md={6} className='mt-5 text-white '>
             <h1 className='text-center'>La Storia</h1>
             <Row xs={12}>
             <Col xs={3}>
@@ -157,7 +136,7 @@ Ritrovata in soffitta tra vecchi libri e foto di famiglia, questa ricetta ha rip
      </Col>
             </Row>
               </Col>
-              <Col xs={12} md={6} className='mt-5'>
+              <Col xs={12} md={6} className='mt-5 text-white '>
             <h1 className='text-center'>Seguici su Instagram</h1>
             <Row className='d-flex justify-content-center align-items-center text-center'>
     <div style={{ display: 'flex', justifyContent: 'center' }}>
