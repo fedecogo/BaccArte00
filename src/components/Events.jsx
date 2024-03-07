@@ -119,15 +119,15 @@ const Events = () => {
       </Row>
 
       <Modal show={showModal} onHide={handleCloseModal} centered>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="bg-dark text-white">
           <Modal.Title>{selectedEvent && selectedEvent.name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="bg-dark text-white">
           {selectedEvent && selectedEvent.images.map((image, index) => (
             <img key={index} src={image} alt={`Event ${index + 1}`} className='img-fluid mb-3' />
           ))}
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer  className="bg-dark text-white">
           <Button variant="secondary" onClick={handleCloseModal}>
             Chiudi
           </Button>
